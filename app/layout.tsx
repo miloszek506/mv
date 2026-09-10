@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     locale: "pl_PL",
     type: "website",
   },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {

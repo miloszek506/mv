@@ -10,10 +10,11 @@ export function ContactForm() {
     const formData = new FormData(event.currentTarget);
     const name = String(formData.get("name") ?? "").trim();
     const email = String(formData.get("email") ?? "").trim();
+    const budget = String(formData.get("budget") ?? "").trim();
     const message = String(formData.get("message") ?? "").trim();
     const subject = encodeURIComponent(`Zapytanie ze strony MV Studio — ${name}`);
     const body = encodeURIComponent(
-      `Imię: ${name}\nE-mail: ${email}\n\nOpis projektu:\n${message}`,
+      `Imię: ${name}\nE-mail: ${email}\nBudżet: ${budget}\n\nOpis projektu:\n${message}`,
     );
 
     setStatus("Otwieram aplikację pocztową — formularz nie zapisuje danych.");
@@ -33,6 +34,10 @@ export function ContactForm() {
       <label>
         <span>Adres e-mail</span>
         <input name="email" type="email" autoComplete="email" required />
+      </label>
+      <label>
+        <span>Budżet</span>
+        <input name="budget" type="text" inputMode="numeric" required />
       </label>
       <label>
         <span>Opisz krótko projekt</span>

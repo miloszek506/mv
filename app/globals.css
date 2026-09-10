@@ -3,7 +3,7 @@
 :root {
   --ink: #0a0a0a;
   --paper: #f3f0e8;
-  --accent: #ff4d00;
+  --accent: #82FF1F;
   --muted: #a7a49d;
   --line: rgba(243, 240, 232, 0.2);
 }
@@ -106,6 +106,14 @@ textarea {
 .text-link:hover::after {
   transform: scaleX(1);
   transform-origin: left;
+}
+
+.desktop-nav a[aria-current="page"] {
+  color: var(--accent);
+}
+
+.desktop-nav a[aria-current="page"]::after {
+  transform: scaleX(1);
 }
 
 .header-contact {
@@ -702,6 +710,17 @@ textarea {
   margin: 0;
 }
 
+.footer-meta {
+  display: grid;
+  font-size: 0.78rem;
+  gap: 0.35rem;
+  justify-items: end;
+}
+
+.footer-meta p {
+  margin-top: 0.5rem;
+}
+
 .footer-links {
   display: flex;
   font-size: 0.78rem;
@@ -827,5 +846,383 @@ textarea {
   .site-footer p {
     grid-column: 1 / -1;
     justify-self: start;
+  }
+}
+
+/* Multipage layout */
+.section-cta {
+  display: block;
+  margin: 2.5rem 0 0 auto;
+  width: max-content;
+}
+
+.subpage-hero {
+  min-height: 88svh;
+}
+
+.subpage-title {
+  font-size: clamp(4.8rem, 13.5vw, 13.5rem);
+  line-height: 0.78;
+  margin-bottom: clamp(2rem, 5vw, 5rem);
+  margin-top: auto;
+}
+
+.subpage-hero-bottom {
+  grid-template-columns: minmax(16rem, 1fr) auto;
+}
+
+.subpage-hero-bottom .circle-link {
+  grid-column: 2;
+}
+
+.subpage-hero--about::after,
+.subpage-hero--projects::after,
+.subpage-hero--services::after,
+.subpage-hero--contact::after {
+  border: 1px solid var(--accent);
+  content: "";
+  height: clamp(7rem, 14vw, 13rem);
+  pointer-events: none;
+  position: absolute;
+  right: clamp(1.25rem, 7vw, 8rem);
+  top: 16%;
+  transform: rotate(10deg);
+  width: clamp(7rem, 14vw, 13rem);
+}
+
+.subpage-hero--projects::after {
+  border-radius: 999px;
+  transform: none;
+}
+
+.subpage-hero--services::after {
+  border-left-color: transparent;
+  border-radius: 50% 0 50% 0;
+  transform: rotate(-8deg);
+}
+
+.subpage-hero--contact::after {
+  background: var(--accent);
+  border-radius: 999px;
+  transform: none;
+}
+
+.featured-project {
+  border-bottom: 1px solid var(--line);
+  margin-bottom: clamp(4rem, 8vw, 7rem);
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+.project-card--featured {
+  width: 100%;
+}
+
+.project-card--featured .project-image-link {
+  aspect-ratio: 2 / 0.92;
+  border: 1px solid rgba(130, 255, 31, 0.45);
+}
+
+.project-card--featured .project-meta h3 {
+  color: var(--accent);
+  font-size: clamp(2.6rem, 6vw, 7rem);
+}
+
+.project-card--featured .project-description {
+  color: var(--paper);
+  font-size: clamp(1rem, 1.35vw, 1.25rem);
+  max-width: 48rem;
+}
+
+.projects-section--full .projects-heading {
+  margin-bottom: clamp(3rem, 6vw, 6rem);
+}
+
+.step-timing {
+  color: #68655e;
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+}
+
+.principles-section,
+.pricing-section,
+.faq-section {
+  padding: clamp(5rem, 11vw, 10rem) clamp(1.25rem, 3vw, 3.5rem);
+}
+
+.principles-section {
+  background: var(--ink);
+}
+
+.principles-intro {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 0.8fr 1.5fr 1fr;
+}
+
+.principles-intro h2,
+.pricing-card h3 {
+  font-size: clamp(2.8rem, 6vw, 7rem);
+  font-weight: 600;
+  letter-spacing: -0.065em;
+  line-height: 0.92;
+  margin: 0;
+}
+
+.principles-intro p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.principles-list {
+  list-style: none;
+  margin: clamp(4rem, 8vw, 8rem) 0 0;
+  padding: 0;
+}
+
+.principles-list li {
+  align-items: center;
+  border-top: 1px solid var(--line);
+  display: grid;
+  font-size: clamp(1.4rem, 3vw, 3.2rem);
+  gap: 2rem;
+  grid-template-columns: 4rem 1fr;
+  letter-spacing: -0.04em;
+  padding: 1.7rem 0;
+}
+
+.principles-list li:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.principles-list span {
+  color: var(--accent);
+  font-size: 0.8rem;
+  letter-spacing: 0;
+}
+
+.pricing-section {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.pricing-grid {
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: clamp(4rem, 8vw, 8rem);
+}
+
+.pricing-card {
+  border: 1px solid rgba(10, 10, 10, 0.24);
+  display: flex;
+  flex-direction: column;
+  min-height: 36rem;
+  padding: clamp(1.5rem, 3vw, 3rem);
+}
+
+.pricing-card:nth-child(2) {
+  background: var(--accent);
+}
+
+.pricing-card-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pricing-card-top p,
+.pricing-card > p {
+  color: #4c4a45;
+}
+
+.pricing-card h3 {
+  margin: clamp(4rem, 7vw, 7rem) 0 1.5rem;
+}
+
+.pricing-card ul {
+  border-top: 1px solid rgba(10, 10, 10, 0.24);
+  list-style: none;
+  margin: 2rem 0;
+  padding: 1.5rem 0 0;
+}
+
+.pricing-card li {
+  margin-bottom: 0.65rem;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.pricing-card li::before {
+  content: "↘";
+  left: 0;
+  position: absolute;
+}
+
+.pricing-card .text-link {
+  margin-top: auto;
+  width: max-content;
+}
+
+.faq-section {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.faq-list {
+  margin: clamp(4rem, 8vw, 8rem) 0 0 auto;
+  max-width: 66rem;
+}
+
+.faq-list details {
+  border-top: 1px solid rgba(10, 10, 10, 0.24);
+}
+
+.faq-list details:last-child {
+  border-bottom: 1px solid rgba(10, 10, 10, 0.24);
+}
+
+.faq-list summary {
+  cursor: pointer;
+  font-size: clamp(1.15rem, 2vw, 1.8rem);
+  font-weight: 500;
+  list-style: none;
+  padding: 1.6rem 3rem 1.6rem 0;
+  position: relative;
+}
+
+.faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-list summary::after {
+  content: "+";
+  font-size: 1.8rem;
+  position: absolute;
+  right: 0;
+  top: 1.2rem;
+}
+
+.faq-list details[open] summary::after {
+  content: "−";
+}
+
+.faq-list summary span {
+  color: #68655e;
+  display: inline-block;
+  font-size: 0.75rem;
+  margin-right: 1.5rem;
+}
+
+.faq-list details p {
+  color: #4c4a45;
+  margin: 0;
+  max-width: 46rem;
+  padding: 0 0 1.8rem 3.2rem;
+}
+
+.contact-page-section {
+  border-top: 1px solid rgba(10, 10, 10, 0.24);
+}
+
+@media (max-width: 900px) {
+  .principles-intro {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .principles-intro p {
+    grid-column: 2;
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-card {
+    min-height: 31rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .site-header {
+    gap: 0.85rem 1rem;
+  }
+
+  .desktop-nav {
+    display: flex;
+    gap: 1.15rem;
+    grid-column: 1 / -1;
+    justify-content: space-between;
+    overflow-x: auto;
+    padding-top: 0.15rem;
+  }
+
+  .desktop-nav a {
+    flex: 0 0 auto;
+    font-size: 0.78rem;
+  }
+
+  .header-contact {
+    display: none;
+  }
+
+  .subpage-hero {
+    min-height: 82svh;
+    padding-top: 8.5rem;
+  }
+
+  .subpage-title {
+    font-size: clamp(4rem, 21vw, 7rem);
+    margin-bottom: auto;
+    margin-top: 20vh;
+  }
+
+  .subpage-hero-bottom {
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .subpage-hero--about::after,
+  .subpage-hero--projects::after,
+  .subpage-hero--services::after,
+  .subpage-hero--contact::after {
+    top: 25%;
+  }
+
+  .project-card--featured .project-image-link {
+    aspect-ratio: 1.45 / 1;
+  }
+
+  .project-card--featured .project-description {
+    margin-left: 0;
+  }
+
+  .principles-intro {
+    display: block;
+  }
+
+  .principles-intro h2 {
+    margin: 2.5rem 0 1.5rem;
+  }
+
+  .principles-list li {
+    grid-template-columns: 2.5rem 1fr;
+  }
+
+  .faq-list details p {
+    padding-left: 0;
+  }
+
+  .site-footer {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-links {
+    align-items: flex-start;
+  }
+
+  .footer-meta {
+    justify-items: start;
   }
 }

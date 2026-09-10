@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Header } from "@/components/Header";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { ContactForm } from "@/components/ContactForm";
@@ -80,13 +81,13 @@ export default function Home() {
             do projektu.
           </p>
           <div className="hero-actions">
-            <a className="circle-link" href="#kontakt">
+            <Link className="circle-link" href="/contact">
               <span>Wyceń projekt</span>
               <span aria-hidden="true">↘</span>
-            </a>
-            <a className="text-link" href="#projekty">
-              Zobacz projekty <span aria-hidden="true">↓</span>
-            </a>
+            </Link>
+            <Link className="text-link" href="/projects">
+              Zobacz projekty <span aria-hidden="true">↗</span>
+            </Link>
           </div>
         </div>
 
@@ -118,6 +119,7 @@ export default function Home() {
               Dzisiaj zajmujemy się projektowaniem, wdrażaniem i utrzymaniem
               stron internetowych przede wszystkim dla małych i lokalnych firm.
             </p>
+            <Link className="text-link" href="/about">Poznaj MV Studio ↗</Link>
           </div>
         </div>
         <div className="founders" aria-label="Współzałożyciele MV Studio" data-reveal>
@@ -158,6 +160,7 @@ export default function Home() {
             </article>
           ))}
         </div>
+        <Link className="section-cta text-link" href="/services">Zobacz pakiety i ceny ↗</Link>
       </section>
 
       <ProjectsSection />
@@ -202,9 +205,9 @@ export default function Home() {
       </section>
 
       <footer className="site-footer">
-        <a className="brand" href="#start" aria-label="Wróć na początek strony">
+        <Link className="brand" href="/" aria-label="MV Studio — strona główna">
           MV<span>•</span>STUDIO
-        </a>
+        </Link>
         <div className="footer-links">
           <a href="http://instagram.com/mvstudio.pl" target="_blank" rel="noreferrer">
             Instagram ↗

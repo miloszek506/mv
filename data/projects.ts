@@ -7,11 +7,24 @@ export type Project = {
   image: string;
   href: string;
   imageAlt: string;
+  featured?: boolean;
 };
 
 export const projects: Project[] = [
   {
     id: "01",
+    name: "Avandis",
+    category: "Projekt wyróżniony",
+    year: "2026",
+    description:
+      "Projekt otwierający portfolio MV Studio. Pełną wersję można zobaczyć bezpośrednio pod adresem avandis.pl.",
+    image: "/projects/avandis.png",
+    href: "http://avandis.pl",
+    imageAlt: "Widok strony internetowej Avandis",
+    featured: true,
+  },
+  {
+    id: "02",
     name: "Restauracja Quaint",
     category: "Concept · Gastronomia",
     year: "2026",
@@ -22,7 +35,7 @@ export const projects: Project[] = [
     imageAlt: "Koncepcja strony internetowej Restauracji Quaint",
   },
   {
-    id: "02",
+    id: "03",
     name: "Fryzjer Nova",
     category: "Concept · Usługi",
     year: "2026",
@@ -33,7 +46,7 @@ export const projects: Project[] = [
     imageAlt: "Koncepcja strony internetowej Fryzjer Nova",
   },
   {
-    id: "03",
+    id: "04",
     name: "MechanikBB",
     category: "Concept · Motoryzacja",
     year: "2026",
@@ -44,7 +57,7 @@ export const projects: Project[] = [
     imageAlt: "Koncepcja strony internetowej MechanikBB",
   },
   {
-    id: "04",
+    id: "05",
     name: "Firma budowlana",
     category: "Concept · Budownictwo",
     year: "2026",

@@ -6,7 +6,11 @@ Treści, dane kontaktowe, odnośniki oraz projekty koncepcyjne zostały przenies
 
 ## Gdzie znajdują się najważniejsze elementy
 
-- `app/page.tsx` — układ strony oraz sekcje O nas, Usługi, Proces, Kontakt i stopka,
+- `app/page.tsx` — strona główna z krótką prezentacją studia, usług, portfolio i procesu,
+- `app/about/page.tsx` — podstrona O nas,
+- `app/projects/page.tsx` — podstrona Portfolio z wyróżnionym projektem Avandis,
+- `app/services/page.tsx` — podstrona Cennik,
+- `app/contact/page.tsx` — podstrona Kontakt,
 - `app/layout.tsx` — język strony, tytuł, opis i pozostałe metadane SEO,
 - `app/globals.css` — kolory, typografia, układy responsywne i stany interakcji,
 - `components/Header.tsx` — nagłówek i główna nawigacja,
@@ -14,6 +18,7 @@ Treści, dane kontaktowe, odnośniki oraz projekty koncepcyjne zostały przenies
 - `components/ProjectCard.tsx` — wygląd pojedynczego projektu,
 - `components/ContactForm.tsx` — formularz otwierający lokalną aplikację pocztową,
 - `components/AnimationController.tsx` — animacje GSAP i ScrollTrigger,
+- `data/site-content.ts` — nawigacja, dane kontaktowe, pakiety, proces i FAQ,
 - `data/projects.ts` — łatwa do edycji lista projektów,
 - `public/projects/` — grafiki projektów,
 - `.env.example` — bezpieczny przykład zmiennych środowiskowych.
@@ -104,7 +109,7 @@ Dodaj świadomie wybrane pliki i utwórz commit. Przed `git add .` upewnij się 
 
 ```bash
 git add .
-git commit -m "Utworzono pierwszy prototyp strony MV Studio"
+git commit -m "Krótki opis wykonanych zmian"
 ```
 
 Jeśli repozytorium jest już połączone z GitHubem, wyślij bieżącą gałąź:

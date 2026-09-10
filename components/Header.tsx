@@ -1,17 +1,31 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { navigation } from "@/data/site-content";
+
 export function Header() {
+  const pathname = usePathname();
+
   return (
     <header className="site-header">
-      <a className="brand" href="#start" aria-label="MV Studio — strona główna">
+      <Link className="brand" href="/" aria-label="MV Studio — strona główna">
         MV<span>•</span>STUDIO
-      </a>
+      </Link>
       <nav className="desktop-nav" aria-label="Główna nawigacja">
-        <a href="#o-nas">O nas</a>
-        <a href="#uslugi">Usługi</a>
-        <a href="#projekty">Projekty</a>
+        {navigation.map((item) => (
+          <Link
+            href={item.href}
+            key={item.href}
+            aria-current={pathname === item.href ? "page" : undefined}
+          >
+            {item.label}
+          </Link>
+        ))}
       </nav>
-      <a className="header-contact" href="#kontakt">
+      <Link className="header-contact" href="/contact">
         Porozmawiajmy <span aria-hidden="true">↘</span>
-      </a>
+      </Link>
     </header>
   );
 }

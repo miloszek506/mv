@@ -5,8 +5,13 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { projects } from "@/data/projects";
 import { ProjectCard } from "@/components/ProjectCard";
+import Link from "next/link";
 
-export function ProjectsSection() {
+type ProjectsSectionProps = {
+  full?: boolean;
+};
+
+export function ProjectsSection({ full = false }: ProjectsSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -59,34 +64,48 @@ export function ProjectsSection() {
     return () => media.revert();
   }, []);
 
+  const featuredProject = projects.find((project) => project.featured) ?? projects[0];
+  const demoProjects = projects.filter((project) => !project.featured);
+  const visibleDemoProjects = full ? demoProjects : demoProjects.slice(0, 2);
+
   return (
     <section
-      className="projects-section"
+      className={`projects-section${full ? " projects-section--full" : ""}`}
       id="projekty"
       aria-labelledby="projects-title"
       ref={sectionRef}
     >
       <div className="section-heading projects-heading">
         <div>
-          <span className="eyebrow">03 · Wybrane prace</span>
+          <span className="eyebrow">{full ? "Portfolio" : "03 · Wybrane prace"}</span>
           <h2 id="projects-title">
-            Pomysły zamienione
-            <br />w kierunek wizualny.
+            {full ? "Avandis na pierwszym planie." : "Pomysły zamienione"}
+            <br />{full ? "Koncepcje tuż za nim." : "w kierunek wizualny."}
           </h2>
         </div>
         <p>
-          Wszystkie prezentowane projekty są autorskimi koncepcjami MV Studio.
-          Nie są realizacjami wykonanymi dla rzeczywistych klientów.
+          Avandis otwiera portfolio jako projekt wyróżniony. Pozostałe pozycje
+          są autorskimi koncepcjami MV Studio i nie są realizacjami wykonanymi
+          dla rzeczywistych klientów.
         </p>
+      </div>
+
+      <div className="featured-project" data-reveal>
+        <ProjectCard project={featuredProject} featured />
       </div>
 
       <div className="projects-viewport" ref={viewportRef}>
         <div className="projects-track" ref={trackRef}>
-          {projects.map((project) => (
+          {visibleDemoProjects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>
       </div>
+      {!full ? (
+        <Link className="section-cta text-link" href="/projects">
+          Zobacz całe portfolio <span aria-hidden="true">↗</span>
+        </Link>
+      ) : null}
     </section>
   );
 }
