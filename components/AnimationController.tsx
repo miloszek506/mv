@@ -17,7 +17,7 @@ export function AnimationController() {
       const heroTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       heroTimeline
-        .from(".site-header", { opacity: 0, y: -18, duration: 0.55 })
+        .from(".site-header", { opacity: 0, y: -18, duration: 0.55, clearProps: "transform" })
         .from(".hero-kicker", { opacity: 0, y: 18, duration: 0.45 }, "-=0.25")
         .from(
           ".hero-title > span",
@@ -64,6 +64,26 @@ export function AnimationController() {
             },
           });
         });
+
+      gsap.utils.toArray<HTMLElement>("[data-team-image]").forEach((image) => {
+        gsap.from(image, {
+          clipPath: "inset(0 0 100% 0)",
+          duration: isMobile ? 0.65 : 0.9,
+          ease: "power3.inOut",
+          scrollTrigger: { trigger: image, start: "top 86%", once: true },
+        });
+      });
+
+      const footerLead = document.querySelector<HTMLElement>("[data-footer] .footer-lead");
+      if (footerLead) {
+        gsap.from(footerLead, {
+          opacity: 0,
+          y: isMobile ? 24 : 54,
+          duration: isMobile ? 0.55 : 0.85,
+          ease: "power3.out",
+          scrollTrigger: { trigger: footerLead, start: "top 88%", once: true },
+        });
+      }
 
       if (!isMobile) {
         gsap.to(".hero-title-second", {

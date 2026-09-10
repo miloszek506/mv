@@ -60,7 +60,7 @@ export const processSteps = [
   },
 ] as const;
 
-export const pricingPackages = [
+export const websitePackages = [
   {
     name: "Start",
     price: "od 800 zł",
@@ -95,6 +95,66 @@ export const pricingPackages = [
     ],
   },
 ] as const;
+
+export const maintenancePackages = [
+  {
+    name: "Start",
+    price: "49 zł",
+    period: "/ miesiąc",
+    summary: "Dla firm, które potrzebują bezpiecznego i stabilnego utrzymania strony.",
+    featured: false,
+    features: [
+      "Hosting",
+      "Certyfikat SSL",
+      "Kopie zapasowe",
+      "Aktualizacje WordPressa",
+      "Aktualizacje wtyczek",
+      "Podstawowe zabezpieczenia",
+      "Monitoring działania strony",
+      "Czas reakcji: 48–72 godziny",
+    ],
+  },
+  {
+    name: "Pro",
+    price: "99 zł",
+    period: "/ miesiąc",
+    summary: "Dla firm, które chcą, aby MV Studio zajmowało się również bieżącą obsługą strony.",
+    featured: true,
+    features: [
+      "Wszystko z pakietu START",
+      "Drobne zmiany na stronie",
+      "Zmiana tekstów i zdjęć",
+      "Aktualizacja danych kontaktowych i oferty",
+      "Do 30 minut prac miesięcznie",
+      "Wsparcie techniczne",
+      "Czas reakcji: 24–48 godzin",
+    ],
+  },
+  {
+    name: "Premium",
+    price: "199 zł",
+    period: "/ miesiąc",
+    summary: "Dla firm, które chcą regularnie rozwijać i aktualizować swoją stronę.",
+    featured: false,
+    features: [
+      "Wszystko z pakietu PRO",
+      "Do 1 godziny prac miesięcznie",
+      "Dodawanie nowych sekcji",
+      "Rozbudowa podstron",
+      "Większe zmiany w wyglądzie strony",
+      "Priorytetowa obsługa",
+      "Czas reakcji: do 24 godzin",
+    ],
+  },
+] as const;
+
+export const additionalMaintenanceWork = {
+  price: "150 zł / godzinę",
+  description:
+    "Prace wykraczające poza zakres wybranego pakietu są wyceniane indywidualnie.",
+  examples:
+    "Dotyczy to między innymi większej rozbudowy strony, nowych podstron i niestandardowych wdrożeń.",
+} as const;
 
 export const frequentlyAskedQuestions = [
   {

@@ -2,10 +2,10 @@ export type Project = {
   id: string;
   name: string;
   category: string;
-  year: string;
+  year?: string;
   description: string;
-  image: string;
-  href: string;
+  image?: string;
+  href?: string;
   imageAlt: string;
   featured?: boolean;
 };
@@ -25,6 +25,13 @@ export const projects: Project[] = [
   },
   {
     id: "02",
+    name: "Benvenuti a Napoli",
+    category: "Pizzeria · Bielsko-Biała",
+    description: "Projekt strony dla pizzerii Benvenuti a Napoli w Bielsku-Białej.",
+    imageAlt: "Benvenuti a Napoli — pizzeria w Bielsku-Białej",
+  },
+  {
+    id: "03",
     name: "Restauracja Quaint",
     category: "Concept · Gastronomia",
     year: "2026",
@@ -35,7 +42,7 @@ export const projects: Project[] = [
     imageAlt: "Koncepcja strony internetowej Restauracji Quaint",
   },
   {
-    id: "03",
+    id: "04",
     name: "Fryzjer Nova",
     category: "Concept · Usługi",
     year: "2026",
@@ -46,7 +53,7 @@ export const projects: Project[] = [
     imageAlt: "Koncepcja strony internetowej Fryzjer Nova",
   },
   {
-    id: "04",
+    id: "05",
     name: "MechanikBB",
     category: "Concept · Motoryzacja",
     year: "2026",
@@ -57,7 +64,7 @@ export const projects: Project[] = [
     imageAlt: "Koncepcja strony internetowej MechanikBB",
   },
   {
-    id: "05",
+    id: "06",
     name: "Firma budowlana",
     category: "Concept · Budownictwo",
     year: "2026",

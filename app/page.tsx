@@ -3,6 +3,7 @@ import { Header } from "@/components/Header";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { ContactForm } from "@/components/ContactForm";
 import { AnimationController } from "@/components/AnimationController";
+import { SiteFooter } from "@/components/SiteFooter";
 
 const services = [
   {
@@ -204,27 +205,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="site-footer">
-        <Link className="brand" href="/" aria-label="MV Studio — strona główna">
-          MV<span>•</span>STUDIO
-        </Link>
-        <div className="footer-links">
-          <a href="http://instagram.com/mvstudio.pl" target="_blank" rel="noreferrer">
-            Instagram ↗
-          </a>
-          <a
-            href="https://www.facebook.com/profile.php?id=61591434677827"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Facebook ↗
-          </a>
-          <a href="https://mvstudio.pl/privacy-policy/" target="_blank" rel="noreferrer">
-            Polityka prywatności ↗
-          </a>
-        </div>
-        <p>© 2026 MV Studio</p>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

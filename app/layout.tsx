@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { CustomCursor } from "@/components/CustomCursor";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
     template: "%s — MV Studio",
   },
   description:
-    "Projektujemy i wdrażamy nowoczesne strony internetowe dla małych i lokalnych firm.",
+    "MV Studio projektuje i wdraża strony internetowe oraz zapewnia hosting, utrzymanie i opiekę nad stronami WordPress w Bielsku-Białej.",
   alternates: {
     canonical: "/",
   },
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="pl">
-      <body>{children}</body>
+      <body>{children}<CustomCursor /></body>
     </html>
   );
 }
