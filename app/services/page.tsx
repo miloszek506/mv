@@ -20,16 +20,31 @@ export default function ServicesPage() {
     <PageShell>
       <PageHero
         eyebrow="Cennik · Strony internetowe i opieka"
-        title={["Zakres", "i ceny"]}
+        title={["Cennik stron", "internetowych"]}
         description="Projektujemy strony internetowe i zapewniamy ich regularne utrzymanie — od hostingu i aktualizacji WordPressa po bieżącą opiekę techniczną."
         index="04"
         variant="services"
         action={{ href: "/contact", label: "Zapytaj o wycenę" }}
       />
+      <section className="website-pricing-section" aria-labelledby="website-pricing-title">
+        <div className="section-heading" data-reveal>
+          <span className="eyebrow">Nowa strona</span>
+          <h2 id="website-pricing-title">Pakiety wykonania<br />strony.</h2>
+        </div>
+        <div className="website-pricing-list">
+          {websitePackages.map((item, index) => (
+            <article className="website-package" key={item.name} data-reveal>
+              <span>0{index + 1}</span><div><h3>{item.name}</h3><p>{item.summary}</p></div>
+              <ul>{item.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
+              <strong>{item.price}</strong><Link className="text-link" href="/contact">Zapytaj ↗</Link>
+            </article>
+          ))}
+        </div>
+      </section>
       <section className="pricing-section maintenance-pricing" aria-labelledby="maintenance-title">
         <div className="section-heading" data-reveal>
           <span className="eyebrow">Utrzymanie strony</span>
-          <h2 id="maintenance-title">Spokój po<br />publikacji.</h2>
+          <h2 id="maintenance-title">Pakiety utrzymania<br />i opieki nad stroną.</h2>
         </div>
         <p className="pricing-intro" data-reveal>
           Pakiety utrzymania i opieki nad stroną obejmują hosting, bezpieczeństwo,
@@ -52,21 +67,6 @@ export default function ServicesPage() {
           <div><span className="eyebrow">Prace dodatkowe</span><strong>{additionalMaintenanceWork.price}</strong></div>
           <p>{additionalMaintenanceWork.description} {additionalMaintenanceWork.examples}</p>
         </aside>
-      </section>
-      <section className="website-pricing-section" aria-labelledby="website-pricing-title">
-        <div className="section-heading" data-reveal>
-          <span className="eyebrow">Nowa strona</span>
-          <h2 id="website-pricing-title">Pakiety wykonania<br />strony.</h2>
-        </div>
-        <div className="website-pricing-list">
-          {websitePackages.map((item, index) => (
-            <article className="website-package" key={item.name} data-reveal>
-              <span>0{index + 1}</span><div><h3>{item.name}</h3><p>{item.summary}</p></div>
-              <ul>{item.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
-              <strong>{item.price}</strong><Link className="text-link" href="/contact">Zapytaj ↗</Link>
-            </article>
-          ))}
-        </div>
       </section>
       <section className="process-section" aria-labelledby="service-process-title">
         <div className="section-heading process-heading" data-reveal>

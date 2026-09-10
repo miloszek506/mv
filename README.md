@@ -14,7 +14,7 @@ Treści, dane kontaktowe, odnośniki oraz projekty koncepcyjne zostały przenies
 - `app/layout.tsx` — język strony, tytuł, opis i pozostałe metadane SEO,
 - `app/globals.css` — kolory, typografia, układy responsywne i stany interakcji,
 - `components/Header.tsx` — nagłówek i animowane menu pełnoekranowe,
-- `components/ProjectsSection.tsx` — spokojny grid portfolio; na stronie głównej pokazuje cztery projekty bez linków,
+- `components/ProjectsSection.tsx` — wspólna sekcja portfolio: dwie realizacje dla klientów oraz poziomy tor czterech koncepcji demonstracyjnych,
 - `components/ProjectCard.tsx` — wygląd pojedynczego projektu,
 - `components/ContactForm.tsx` — formularz otwierający lokalną aplikację pocztową,
 - `components/AnimationController.tsx` — animacje GSAP i ScrollTrigger,

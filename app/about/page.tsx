@@ -35,14 +35,14 @@ export default function AboutPage() {
         </div>
         <div className="founders" aria-label="Współzałożyciele MV Studio" data-reveal>
           <article>
-            <div className="team-image-wrap" data-team-image>
+            <div className="team-image-wrap team-image-wrap--vova" data-team-image>
               <Image src="/images/vova.png" alt="Portret Vovy, współzałożyciela MV Studio" fill sizes="(max-width: 760px) 100vw, 46vw" />
             </div>
             <span>Design · UX/UI</span><h3>Vova</h3>
             <p>Odpowiada za design oraz UX/UI. Łączy estetykę z potrzebami użytkownika i funkcjonalnością, dbając o czytelny, nowoczesny i intuicyjny projekt.</p>
           </article>
           <article>
-            <div className="team-image-wrap" data-team-image>
+            <div className="team-image-wrap team-image-wrap--milosz" data-team-image>
               <Image src="/images/milosz.png" alt="Portret Miłosza, współzałożyciela MV Studio" fill sizes="(max-width: 760px) 100vw, 46vw" />
             </div>
             <span>Technologia · WordPress</span><h3>Miłosz</h3>

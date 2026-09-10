@@ -17,8 +17,8 @@ export function AnimationController() {
       const heroTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       heroTimeline
-        .from(".site-header", { opacity: 0, y: -18, duration: 0.55, clearProps: "transform" })
-        .from(".hero-kicker", { opacity: 0, y: 18, duration: 0.45 }, "-=0.25")
+        .from(".site-header", { opacity: 0, y: -18, duration: 0.55, clearProps: "transform", immediateRender: false })
+        .from(".hero-kicker", { opacity: 0, y: 18, duration: 0.45, immediateRender: false }, "-=0.25")
         .from(
           ".hero-title > span",
           {
@@ -26,12 +26,13 @@ export function AnimationController() {
             yPercent: isMobile ? 28 : 42,
             duration: isMobile ? 0.65 : 0.9,
             stagger: 0.1,
+            immediateRender: false,
           },
           "-=0.2",
         )
         .from(
           ".hero-bottom",
-          { opacity: 0, y: 22, duration: 0.55 },
+          { opacity: 0, y: 22, duration: 0.55, immediateRender: false },
           "-=0.4",
         );
 
@@ -50,7 +51,7 @@ export function AnimationController() {
       });
 
       gsap.utils
-        .toArray<HTMLElement>(".service-row, .process-list li")
+        .toArray<HTMLElement>(".service-row, .process-list li, .website-package")
         .forEach((element) => {
           gsap.from(element, {
             opacity: 0,
@@ -71,6 +72,36 @@ export function AnimationController() {
           duration: isMobile ? 0.65 : 0.9,
           ease: "power3.inOut",
           scrollTrigger: { trigger: image, start: "top 86%", once: true },
+        });
+      });
+
+      gsap.from("[data-real-projects] .project-card", {
+        opacity: 0,
+        y: isMobile ? 24 : 54,
+        rotateX: isMobile ? 0 : 5,
+        duration: isMobile ? 0.55 : 0.85,
+        stagger: 0.12,
+        ease: "power3.out",
+        scrollTrigger: { trigger: "[data-real-projects]", start: "top 84%", once: true },
+      });
+
+      gsap.from("[data-demo-rail] .project-card", {
+        opacity: 0,
+        x: isMobile ? 0 : 70,
+        y: isMobile ? 24 : 0,
+        duration: isMobile ? 0.5 : 0.75,
+        stagger: 0.09,
+        ease: "power3.out",
+        scrollTrigger: { trigger: "[data-demo-rail]", start: "top 88%", once: true },
+      });
+
+      gsap.utils.toArray<HTMLElement>(".circle-link, .footer-cta, .pricing-cta").forEach((button) => {
+        gsap.from(button, {
+          opacity: 0,
+          scale: isMobile ? 0.96 : 0.88,
+          duration: 0.55,
+          ease: "back.out(1.4)",
+          scrollTrigger: { trigger: button, start: "top 94%", once: true },
         });
       });
 

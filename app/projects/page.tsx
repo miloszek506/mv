@@ -16,12 +16,12 @@ export default function ProjectsPage() {
       <PageHero
         eyebrow="Portfolio · Wybrane prace"
         title={["Nasze", "projekty"]}
-        description="Avandis oraz projekty koncepcyjne pokazujące możliwości projektowe MV Studio. Koncepcje nie są realizacjami dla rzeczywistych klientów."
+        description="Avandis i Benvenuti a Napoli to projekty dla klientów. Pozostałe pozycje są wyraźnie oznaczonymi koncepcjami demonstracyjnymi MV Studio."
         index="03"
         variant="projects"
         action={{ href: "/contact", label: "Wyceń projekt" }}
       />
-      <ProjectsSection full />
+      <ProjectsSection interactive />
       <FaqList />
     </PageShell>
   );

@@ -1,41 +1,52 @@
-import { projects } from "@/data/projects";
-import { ProjectCard } from "@/components/ProjectCard";
 import Link from "next/link";
+import { ProjectCard } from "@/components/ProjectCard";
+import { projects } from "@/data/projects";
 
 type ProjectsSectionProps = {
-  full?: boolean;
+  interactive?: boolean;
 };
 
-export function ProjectsSection({ full = false }: ProjectsSectionProps) {
-  const visibleProjects = full ? projects : projects.slice(0, 4);
+export function ProjectsSection({ interactive = false }: ProjectsSectionProps) {
+  const realProjects = projects.filter((project) => project.kind === "real");
+  const demoProjects = projects.filter((project) => project.kind === "demo");
 
   return (
     <section
-      className={`projects-section projects-section--grid${full ? " projects-section--full" : " projects-section--home"}`}
+      className="projects-section projects-section--portfolio"
       id="projekty"
       aria-labelledby="projects-title"
     >
       <div className="section-heading projects-heading">
         <div>
-          <span className="eyebrow">{full ? "Portfolio" : "03 · Wybrane prace"}</span>
-          <h2 id="projects-title">
-            {full ? "Realizacje i kierunki" : "Cztery wybrane"}
-            <br />{full ? "projektowe." : "projekty."}
-          </h2>
+          <span className="eyebrow">03 · Portfolio</span>
+          <h2 id="projects-title">Realizacje i kierunki<br />projektowe.</h2>
         </div>
         <p>
-          Avandis otwiera portfolio, a Benvenuti a Napoli prezentuje projekt dla
-          pizzerii w Bielsku-Białej. Pozycje oznaczone jako Concept są autorskimi
-          koncepcjami MV Studio, a nie realizacjami dla rzeczywistych klientów.
+          Avandis i Benvenuti a Napoli to projekty dla klientów. Pozycje oznaczone
+          jako Demo · Concept są autorskimi koncepcjami MV Studio, a nie realizacjami
+          dla rzeczywistych klientów.
         </p>
       </div>
 
-      <div className="projects-grid" data-reveal>
-        {visibleProjects.map((project) => (
-          <ProjectCard key={project.id} project={project} featured={full && project.featured} interactive={full} />
+      <div className="real-projects-grid" data-real-projects>
+        {realProjects.map((project) => (
+          <ProjectCard key={project.id} project={project} interactive={interactive} />
         ))}
       </div>
-      {!full ? (
+
+      <div className="demo-projects-heading" data-reveal>
+        <span className="eyebrow">Demo · Concept</span>
+        <p>Autorskie kierunki pokazujące możliwości projektowe MV Studio.</p>
+      </div>
+      <div className="demo-projects-viewport" data-demo-rail tabIndex={0} aria-label="Projekty demonstracyjne — przewiń poziomo">
+        <div className="demo-projects-rail">
+          {demoProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} interactive={interactive} />
+          ))}
+        </div>
+      </div>
+
+      {!interactive ? (
         <Link className="section-cta text-link" href="/projects">
           Zobacz całe portfolio <span aria-hidden="true">↗</span>
         </Link>
