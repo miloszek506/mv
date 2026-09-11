@@ -73,6 +73,18 @@ textarea {
   padding: 0 0.12rem;
 }
 
+.brand--logo {
+  align-items: center;
+  display: flex;
+  height: 2.7rem;
+}
+
+.brand-logo {
+  height: 2.7rem;
+  object-fit: contain;
+  width: 2.7rem;
+}
+
 .desktop-nav {
   display: flex;
   gap: clamp(1.25rem, 2.5vw, 2.75rem);
@@ -175,6 +187,12 @@ textarea {
   margin: auto 0;
   position: relative;
   text-transform: uppercase;
+}
+
+.hero-title,
+.hero-title > span {
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
 .hero-title-second {
@@ -323,9 +341,22 @@ textarea {
   }
 
   .hero-title {
-    font-size: clamp(5.1rem, 29vw, 9rem);
-    line-height: 0.76;
-    margin: 12vh 0 auto;
+    font-size: clamp(3.45rem, 17.5vw, 6.6rem);
+    line-height: 0.82;
+    margin: clamp(4rem, 12vh, 7rem) 0 auto;
+    overflow: visible;
+    word-break: normal;
+  }
+
+  .subpage-title {
+    font-size: clamp(3rem, 14.5vw, 5.4rem);
+    hyphens: auto;
+    letter-spacing: -0.075em;
+    line-height: 0.88;
+  }
+
+  .subpage-title > span {
+    overflow-wrap: anywhere;
   }
 
   .hero-title-second {
@@ -334,6 +365,10 @@ textarea {
 
   .home-page .hero-title-mask.hero-title-second {
     align-self: flex-start;
+  }
+
+  .home-page .hero-title-mask {
+    overflow: hidden;
   }
 
   .hero-orbit--large {
@@ -380,6 +415,10 @@ textarea {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .home-page .hero-title-mask {
+    overflow: visible;
   }
 
   *,
@@ -1256,14 +1295,21 @@ textarea {
   }
 
   .subpage-hero {
-    min-height: 82svh;
+    min-height: max(82svh, 42rem);
     padding-top: 8.5rem;
   }
 
   .subpage-title {
-    font-size: clamp(4rem, 21vw, 7rem);
-    margin-bottom: auto;
-    margin-top: 20vh;
+    font-size: clamp(3rem, 14.5vw, 5.4rem);
+    line-height: 0.88;
+    margin-bottom: clamp(2rem, 6vh, 3.5rem);
+    margin-top: clamp(4rem, 12vh, 7rem);
+    max-width: 100%;
+    overflow: visible;
+  }
+
+  .subpage-title > span {
+    overflow-wrap: anywhere;
   }
 
   .subpage-hero-bottom {
@@ -1504,7 +1550,7 @@ body.menu-open {
     border: 1px solid var(--accent);
     border-radius: 50%;
     height: 2.75rem;
-    transition: background-color 180ms ease, transform 220ms ease;
+    transition: background-color 180ms ease, border-color 180ms ease, transform 220ms ease;
     width: 2.75rem;
   }
 
@@ -1512,12 +1558,26 @@ body.menu-open {
     background: var(--accent);
     border-radius: 50%;
     height: 0.34rem;
+    transition: background-color 180ms ease;
     width: 0.34rem;
   }
 
   .custom-cursor.is-interactive .cursor-ring {
     background: rgba(130, 255, 31, 0.13);
     transform: translate(-50%, -50%) scale(1.55);
+  }
+
+  .custom-cursor.is-dark-theme .cursor-ring {
+    background: rgba(10, 10, 10, 0.12);
+    border-color: var(--ink);
+  }
+
+  .custom-cursor.is-dark-theme .cursor-dot {
+    background: var(--ink);
+  }
+
+  .custom-cursor.is-dark-theme.is-interactive .cursor-ring {
+    background: rgba(10, 10, 10, 0.22);
   }
 }
 
@@ -1632,7 +1692,6 @@ body.menu-open {
 }
 
 .demo-projects-stage--scroll-driven .demo-projects-rail .project-card {
-  perspective: 1100px;
   scroll-snap-align: none;
   width: min(62vw, 50rem);
 }
@@ -1645,19 +1704,20 @@ body.menu-open {
   overflow: hidden;
   padding: clamp(0.55rem, 1vw, 0.9rem);
   transition: border-color 250ms ease, box-shadow 350ms ease, transform 350ms ease;
+  transform-style: flat;
 }
 
 .demo-projects-stage--scroll-driven .project-image-link {
   border-radius: clamp(0.8rem, 1.4vw, 1.35rem);
   overflow: hidden;
-  transform: translateZ(18px);
+  transform: none;
 }
 
 .demo-projects-stage--scroll-driven .project-meta,
 .demo-projects-stage--scroll-driven .project-description {
   margin-inline: clamp(0.2rem, 0.7vw, 0.65rem);
   position: relative;
-  transform: translateZ(12px);
+  transform: none;
 }
 
 .demo-projects-stage--scroll-driven .project-card-surface::after {

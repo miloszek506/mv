@@ -23,6 +23,7 @@ export function AnimationController() {
 
         if (homePage) {
           const titleWords = hero.querySelectorAll<HTMLElement>(".hero-title-word");
+          const titleMasks = hero.querySelectorAll<HTMLElement>(".hero-title-mask");
           const heroOrbits = hero.querySelectorAll<HTMLElement>(".hero-orbit, .hero-signal");
 
           heroTimeline
@@ -40,7 +41,8 @@ export function AnimationController() {
               },
               "-=0.25",
             )
-            .from(".hero-bottom", { opacity: 0, y: 28, duration: 0.65, immediateRender: false }, "-=0.55");
+            .from(".hero-bottom", { opacity: 0, y: 28, duration: 0.65, immediateRender: false }, "-=0.55")
+            .set(titleMasks, { overflow: "visible" });
 
           gsap.to(hero.querySelector(".hero-title"), {
             yPercent: isMobile ? -5 : -10,
@@ -147,7 +149,7 @@ export function AnimationController() {
       const demoViewport = document.querySelector<HTMLElement>("[data-demo-rail]");
       const demoRail = demoViewport?.querySelector<HTMLElement>(".demo-projects-rail");
       const demoProjectCards = gsap.utils.toArray<HTMLElement>("[data-demo-rail] .project-card");
-      if (!homePage && demoViewport && demoProjectCards.length > 0) {
+      if (!demoStage && demoViewport && demoProjectCards.length > 0) {
         gsap.from(demoProjectCards, {
           opacity: 0,
           x: isMobile ? 0 : 70,
@@ -159,7 +161,7 @@ export function AnimationController() {
         });
       }
 
-      if (!isMobile && homePage && demoStage && demoViewport && demoRail && demoProjectCards.length > 0) {
+      if (!isMobile && demoStage && demoViewport && demoRail && demoProjectCards.length > 0) {
         const getTravelDistance = () => Math.max(0, demoRail.scrollWidth - demoViewport.clientWidth);
         const horizontalTrack = gsap.to(demoRail, {
           x: () => -getTravelDistance(),
@@ -182,10 +184,9 @@ export function AnimationController() {
 
           gsap.fromTo(
             surface,
-            { rotateY: 8, rotateX: 2, scale: 0.92, opacity: 0.42 },
+            { x: 36, scale: 0.92, opacity: 0.42 },
             {
-              rotateY: -8,
-              rotateX: -2,
+              x: -18,
               scale: 1,
               opacity: 1,
               ease: "none",

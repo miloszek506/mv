@@ -230,7 +230,7 @@ export default function Home() {
 
       <FaqList />
 
-      <section className="contact-section" id="kontakt" aria-labelledby="contact-title">
+      <section className="contact-section" id="kontakt" aria-labelledby="contact-title" data-cursor-theme="dark">
         <div className="contact-intro" data-reveal>
           <span className="eyebrow">05 · Kontakt</span>
           <h2 id="contact-title">

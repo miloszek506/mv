@@ -33,7 +33,7 @@ export function CustomCursor() {
     };
 
     const deactivate = () => {
-      cursor.classList.remove("is-visible", "is-interactive");
+      cursor.classList.remove("is-visible", "is-interactive", "is-dark-theme");
       document.documentElement.classList.remove("has-custom-cursor");
       hasMoved = false;
       window.cancelAnimationFrame(frame);
@@ -48,6 +48,10 @@ export function CustomCursor() {
       pointer.x = event.clientX;
       pointer.y = event.clientY;
       place(dot, pointer.x, pointer.y);
+
+      const target = document.elementFromPoint(event.clientX, event.clientY);
+      const themedSection = target?.closest<HTMLElement>("[data-cursor-theme]");
+      cursor.classList.toggle("is-dark-theme", themedSection?.dataset.cursorTheme === "dark");
 
       if (!hasMoved) {
         hasMoved = true;
@@ -74,6 +78,7 @@ export function CustomCursor() {
 
     return () => {
       document.documentElement.classList.remove("has-custom-cursor");
+      cursor.classList.remove("is-dark-theme");
       window.removeEventListener("pointermove", handlePointerMove);
       document.removeEventListener("pointerover", handlePointerOver);
       document.documentElement.removeEventListener("mouseleave", handlePointerLeave);

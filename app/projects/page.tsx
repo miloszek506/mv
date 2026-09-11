@@ -21,7 +21,7 @@ export default function ProjectsPage() {
         variant="projects"
         action={{ href: "/contact", label: "Wyceń projekt" }}
       />
-      <ProjectsSection interactive />
+      <ProjectsSection interactive scrollDrivenDemo />
       <FaqList />
     </PageShell>
   );

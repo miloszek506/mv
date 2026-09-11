@@ -21,7 +21,7 @@ export default function ContactPage() {
         index="05"
         variant="contact"
       />
-      <section className="contact-section contact-page-section" aria-labelledby="contact-form-title">
+      <section className="contact-section contact-page-section" aria-labelledby="contact-form-title" data-cursor-theme="dark">
         <div className="contact-intro" data-reveal>
           <span className="eyebrow">Wycena projektu</span>
           <h2 id="contact-form-title">Zacznijmy<br />rozmowę.</h2>

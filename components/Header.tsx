@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
@@ -86,8 +87,8 @@ export function Header() {
 
   return (
     <header className={`site-header${isOpen ? " is-menu-open" : ""}`}>
-      <Link className="brand" href="/" aria-label="MV Studio — strona główna">
-        MV<span>•</span>STUDIO
+      <Link className="brand brand--logo" href="/" aria-label="MV Studio — strona główna">
+        <Image className="brand-logo" src="/icon.png" alt="Logo MV Studio" width={192} height={192} priority />
       </Link>
       <button
         ref={buttonRef}
