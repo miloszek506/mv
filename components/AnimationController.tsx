@@ -14,27 +14,32 @@ export function AnimationController() {
 
     const isMobile = window.matchMedia("(max-width: 760px)").matches;
     const context = gsap.context(() => {
-      const heroTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+      const header = document.querySelector<HTMLElement>(".site-header");
+      const hero = document.querySelector<HTMLElement>(".hero");
 
-      heroTimeline
-        .from(".site-header", { opacity: 0, y: -18, duration: 0.55, clearProps: "transform", immediateRender: false })
-        .from(".hero-kicker", { opacity: 0, y: 18, duration: 0.45, immediateRender: false }, "-=0.25")
-        .from(
-          ".hero-title > span",
-          {
-            opacity: 0,
-            yPercent: isMobile ? 28 : 42,
-            duration: isMobile ? 0.65 : 0.9,
-            stagger: 0.1,
-            immediateRender: false,
-          },
-          "-=0.2",
-        )
-        .from(
-          ".hero-bottom",
-          { opacity: 0, y: 22, duration: 0.55, immediateRender: false },
-          "-=0.4",
-        );
+      if (header && hero) {
+        const heroTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+        heroTimeline
+          .from(header, { opacity: 0, y: -18, duration: 0.55, clearProps: "transform", immediateRender: false })
+          .from(".hero-kicker", { opacity: 0, y: 18, duration: 0.45, immediateRender: false }, "-=0.25")
+          .from(
+            ".hero-title > span",
+            {
+              opacity: 0,
+              yPercent: isMobile ? 28 : 42,
+              duration: isMobile ? 0.65 : 0.9,
+              stagger: 0.1,
+              immediateRender: false,
+            },
+            "-=0.2",
+          )
+          .from(
+            ".hero-bottom",
+            { opacity: 0, y: 22, duration: 0.55, immediateRender: false },
+            "-=0.4",
+          );
+      }
 
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((element) => {
         gsap.from(element, {
@@ -75,25 +80,33 @@ export function AnimationController() {
         });
       });
 
-      gsap.from("[data-real-projects] .project-card", {
-        opacity: 0,
-        y: isMobile ? 24 : 54,
-        rotateX: isMobile ? 0 : 5,
-        duration: isMobile ? 0.55 : 0.85,
-        stagger: 0.12,
-        ease: "power3.out",
-        scrollTrigger: { trigger: "[data-real-projects]", start: "top 84%", once: true },
-      });
+      const realProjects = document.querySelector<HTMLElement>("[data-real-projects]");
+      const realProjectCards = gsap.utils.toArray<HTMLElement>("[data-real-projects] .project-card");
+      if (realProjects && realProjectCards.length > 0) {
+        gsap.from(realProjectCards, {
+          opacity: 0,
+          y: isMobile ? 24 : 54,
+          rotateX: isMobile ? 0 : 5,
+          duration: isMobile ? 0.55 : 0.85,
+          stagger: 0.12,
+          ease: "power3.out",
+          scrollTrigger: { trigger: realProjects, start: "top 84%", once: true },
+        });
+      }
 
-      gsap.from("[data-demo-rail] .project-card", {
-        opacity: 0,
-        x: isMobile ? 0 : 70,
-        y: isMobile ? 24 : 0,
-        duration: isMobile ? 0.5 : 0.75,
-        stagger: 0.09,
-        ease: "power3.out",
-        scrollTrigger: { trigger: "[data-demo-rail]", start: "top 88%", once: true },
-      });
+      const demoRail = document.querySelector<HTMLElement>("[data-demo-rail]");
+      const demoProjectCards = gsap.utils.toArray<HTMLElement>("[data-demo-rail] .project-card");
+      if (demoRail && demoProjectCards.length > 0) {
+        gsap.from(demoProjectCards, {
+          opacity: 0,
+          x: isMobile ? 0 : 70,
+          y: isMobile ? 24 : 0,
+          duration: isMobile ? 0.5 : 0.75,
+          stagger: 0.09,
+          ease: "power3.out",
+          scrollTrigger: { trigger: demoRail, start: "top 88%", once: true },
+        });
+      }
 
       gsap.utils.toArray<HTMLElement>(".circle-link, .footer-cta, .pricing-cta").forEach((button) => {
         gsap.from(button, {
@@ -116,18 +129,38 @@ export function AnimationController() {
         });
       }
 
-      if (!isMobile) {
-        gsap.to(".hero-title-second", {
-          xPercent: -4,
-          ease: "none",
-          scrollTrigger: {
-            trigger: ".hero",
-            start: "top top",
-            end: "bottom top",
-            scrub: 0.8,
-          },
-        });
+      if (!isMobile && hero) {
+        const heroTitleSecond = hero.querySelector<HTMLElement>(".hero-title-second");
+        if (heroTitleSecond) {
+          gsap.to(heroTitleSecond, {
+            xPercent: -4,
+            ease: "none",
+            scrollTrigger: {
+              trigger: hero,
+              start: "top top",
+              end: "bottom top",
+              scrub: 0.8,
+            },
+          });
+        }
 
+        gsap.utils.toArray<HTMLElement>(".project-image").forEach((image) => {
+          gsap.fromTo(
+            image,
+            { yPercent: -3 },
+            {
+              yPercent: 3,
+              ease: "none",
+              scrollTrigger: {
+                trigger: image,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1,
+              },
+            },
+          );
+        });
+      } else if (!isMobile) {
         gsap.utils.toArray<HTMLElement>(".project-image").forEach((image) => {
           gsap.fromTo(
             image,

@@ -12,7 +12,7 @@ export const contact = {
   city: "Bielsko-Biała",
   instagram: "http://instagram.com/mvstudio.pl",
   facebook: "https://www.facebook.com/profile.php?id=61591434677827",
-  privacyPolicy: "https://mvstudio.pl/privacy-policy/",
+  privacyPolicy: "/polityka-prywatnosci",
 } as const;
 
 export const services = [

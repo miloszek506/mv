@@ -26,7 +26,7 @@ export function SiteFooter() {
         <div className="footer-socials">
           <a href={contact.instagram} target="_blank" rel="noreferrer">Instagram ↗</a>
           <a href={contact.facebook} target="_blank" rel="noreferrer">Facebook ↗</a>
-          <a href={contact.privacyPolicy} target="_blank" rel="noreferrer">Polityka prywatności ↗</a>
+          <Link href={contact.privacyPolicy}>Polityka prywatności</Link>
         </div>
       </div>
       <p className="footer-copyright">© 2026 MV Studio. Wszelkie prawa zastrzeżone.</p>
