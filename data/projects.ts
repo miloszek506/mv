@@ -5,6 +5,7 @@ export type Project = {
   year?: string;
   description: string;
   image?: string;
+  previewVideo?: string;
   href?: string;
   imageAlt: string;
   kind: "real" | "demo";
@@ -19,6 +20,7 @@ export const projects: Project[] = [
     description:
       "Projekt dla klienta przygotowany przez MV Studio. Pełną wersję można zobaczyć bezpośrednio pod adresem avandis.pl.",
     image: "/projects/avandis.png",
+    previewVideo: "/media/awandis-scroll-preview.webm",
     href: "http://avandis.pl",
     imageAlt: "Widok strony internetowej Avandis",
     kind: "real",

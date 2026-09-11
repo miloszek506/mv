@@ -629,6 +629,28 @@ textarea {
   transition: filter 350ms ease, transform 650ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
+.project-preview {
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 250ms ease;
+  width: 100%;
+}
+
+.project-image-link--with-preview:hover .project-preview,
+.project-image-link--with-preview:focus-visible .project-preview {
+  opacity: 1;
+}
+
+@media (max-width: 760px), (hover: none), (prefers-reduced-motion: reduce) {
+  .project-preview {
+    display: none;
+  }
+}
+
 .project-image-link:hover .project-image {
   filter: brightness(0.72);
   transform: scale(1.025);

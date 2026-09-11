@@ -14,7 +14,26 @@ export function ProjectCard({ project, interactive = true }: ProjectCardProps) {
   const cardRef = useRef<HTMLElement>(null);
   const surfaceRef = useRef<HTMLDivElement>(null);
   const reflectionRef = useRef<HTMLSpanElement>(null);
+  const previewRef = useRef<HTMLVideoElement>(null);
   const isReal = project.kind === "real";
+
+  const canPlayPreview = () =>
+    typeof window !== "undefined" &&
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const playPreview = () => {
+    const preview = previewRef.current;
+
+    if (!preview || !canPlayPreview()) return;
+
+    preview.currentTime = 0;
+    void preview.play().catch(() => undefined);
+  };
+
+  const pausePreview = () => {
+    previewRef.current?.pause();
+  };
 
   useLayoutEffect(() => {
     const card = cardRef.current;
@@ -74,6 +93,18 @@ export function ProjectCard({ project, interactive = true }: ProjectCardProps) {
           <span>Benvenuti</span><span>a Napoli</span>
         </span>
       )}
+      {project.previewVideo ? (
+        <video
+          ref={previewRef}
+          className="project-preview"
+          src={project.previewVideo}
+          poster={project.image}
+          muted
+          playsInline
+          preload="none"
+          aria-hidden="true"
+        />
+      ) : null}
       {interactive && project.href ? <span className="project-open" aria-hidden="true">Otwórz ↗</span> : null}
     </>
   );
@@ -82,11 +113,27 @@ export function ProjectCard({ project, interactive = true }: ProjectCardProps) {
     <article className={`project-card project-card--${project.kind}`} ref={cardRef}>
       <div className="project-card-surface" ref={surfaceRef}>
         {interactive && project.href ? (
-          <a className="project-image-link" href={project.href} target="_blank" rel="noreferrer" aria-label={`Otwórz projekt ${project.name} w nowej karcie`}>
+          <a
+            className={`project-image-link${project.previewVideo ? " project-image-link--with-preview" : ""}`}
+            href={project.href}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`Otwórz projekt ${project.name} w nowej karcie`}
+            onPointerEnter={playPreview}
+            onPointerLeave={pausePreview}
+            onFocus={playPreview}
+            onBlur={pausePreview}
+          >
             {visual}
           </a>
         ) : (
-          <div className="project-image-link project-image-static">{visual}</div>
+          <div
+            className={`project-image-link project-image-static${project.previewVideo ? " project-image-link--with-preview" : ""}`}
+            onPointerEnter={playPreview}
+            onPointerLeave={pausePreview}
+          >
+            {visual}
+          </div>
         )}
         {isReal ? <span className="project-reflection" ref={reflectionRef} aria-hidden="true" /> : null}
         <div className="project-meta">
