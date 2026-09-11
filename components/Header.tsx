@@ -88,7 +88,7 @@ export function Header() {
   return (
     <header className={`site-header${isOpen ? " is-menu-open" : ""}`}>
       <Link className="brand brand--logo" href="/" aria-label="MV Studio — strona główna">
-        <Image className="brand-logo" src="/icon.png" alt="Logo MV Studio" width={192} height={192} priority />
+        <Image className="brand-logo" src="/images/mv-studio-logo.svg" alt="Logo MV Studio" width={147} height={85} priority />
       </Link>
       <button
         ref={buttonRef}

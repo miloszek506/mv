@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { ArrowIcon } from "@/components/ArrowIcon";
 
 export function ContactForm() {
   const [status, setStatus] = useState("");
@@ -44,7 +45,7 @@ export function ContactForm() {
         <textarea name="message" rows={4} required />
       </label>
       <button type="submit">
-        Przygotuj wiadomość <span aria-hidden="true">↗</span>
+        Przygotuj wiadomość <ArrowIcon />
       </button>
       <p className="form-status" aria-live="polite">
         {status}

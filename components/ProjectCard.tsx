@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
+import { ArrowIcon } from "@/components/ArrowIcon";
 import type { Project } from "@/data/projects";
 
 type ProjectCardProps = {
@@ -105,7 +106,7 @@ export function ProjectCard({ project, interactive = true }: ProjectCardProps) {
           aria-hidden="true"
         />
       ) : null}
-      {interactive && project.href ? <span className="project-open" aria-hidden="true">Otwórz ↗</span> : null}
+      {interactive && project.href ? <span className="project-open" aria-hidden="true">Otwórz <ArrowIcon /></span> : null}
     </>
   );
 
@@ -117,7 +118,7 @@ export function ProjectCard({ project, interactive = true }: ProjectCardProps) {
             className={`project-image-link${project.previewVideo ? " project-image-link--with-preview" : ""}`}
             href={project.href}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             aria-label={`Otwórz projekt ${project.name} w nowej karcie`}
             onPointerEnter={playPreview}
             onPointerLeave={pausePreview}

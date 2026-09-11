@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowIcon } from "@/components/ArrowIcon";
 import { PageHero } from "@/components/PageHero";
 import { PageShell } from "@/components/PageShell";
 
@@ -59,7 +60,7 @@ export default function AboutPage() {
         <ol className="principles-list">
           {principles.map((principle, index) => <li key={principle}><span>0{index + 1}</span>{principle}</li>)}
         </ol>
-        <Link className="section-cta text-link" href="/contact">Opowiedz nam o projekcie ↗</Link>
+        <Link className="section-cta text-link" href="/contact">Opowiedz nam o projekcie <ArrowIcon /></Link>
       </section>
     </PageShell>
   );

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowIcon } from "@/components/ArrowIcon";
 import { Header } from "@/components/Header";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { ContactForm } from "@/components/ContactForm";
@@ -110,10 +111,10 @@ export default function Home() {
           <div className="hero-actions">
             <Link className="circle-link" href="/contact">
               <span>Wyceń projekt</span>
-              <span aria-hidden="true">↘</span>
+              <ArrowIcon />
             </Link>
             <Link className="text-link" href="/projects">
-              Zobacz projekty <span aria-hidden="true">↗</span>
+              Zobacz projekty <ArrowIcon />
             </Link>
           </div>
         </div>
@@ -146,7 +147,7 @@ export default function Home() {
               Dzisiaj zajmujemy się projektowaniem, wdrażaniem i utrzymaniem
               stron internetowych przede wszystkim dla małych i lokalnych firm.
             </p>
-            <Link className="text-link" href="/about">Poznaj MV Studio ↗</Link>
+            <Link className="text-link" href="/about">Poznaj MV Studio <ArrowIcon /></Link>
           </div>
         </div>
         <div className="founders" aria-label="Współzałożyciele MV Studio" data-reveal>
@@ -183,11 +184,11 @@ export default function Home() {
               <span>{service.number}</span>
               <h3>{service.title}</h3>
               <p>{service.description}</p>
-              <span className="service-arrow" aria-hidden="true">↘</span>
+              <span className="service-arrow" aria-hidden="true"><ArrowIcon /></span>
             </article>
           ))}
         </div>
-        <Link className="section-cta text-link" href="/services">Zobacz pakiety i ceny ↗</Link>
+        <Link className="section-cta text-link" href="/services">Zobacz pakiety i ceny <ArrowIcon /></Link>
       </section>
 
       <ProjectsSection scrollDrivenDemo />
@@ -209,7 +210,7 @@ export default function Home() {
             </li>
           ))}
         </ol>
-        <Link className="section-cta text-link" href="/contact">Opowiedz nam o swojej stronie ↗</Link>
+        <Link className="section-cta text-link" href="/contact">Opowiedz nam o swojej stronie <ArrowIcon /></Link>
       </section>
 
       <section className="principles-section home-principles" aria-labelledby="principles-title">
@@ -240,7 +241,7 @@ export default function Home() {
           <p>Zamień swój pomysł w konkretną realizację.</p>
         </div>
         <div className="contact-details" data-reveal>
-          <a href="mailto:kontakt@mvstudio.pl">kontakt@mvstudio.pl ↗</a>
+          <a href="mailto:kontakt@mvstudio.pl">kontakt@mvstudio.pl <ArrowIcon /></a>
           <a href="tel:+48505780066">+48 505 780 066</a>
           <a href="tel:+48884631429">+48 884 631 429</a>
           <span>Bielsko-Biała</span>

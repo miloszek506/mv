@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArrowIcon } from "@/components/ArrowIcon";
 import { PageHero } from "@/components/PageHero";
 import { PageShell } from "@/components/PageShell";
 import {
@@ -36,7 +37,7 @@ export default function ServicesPage() {
             <article className="website-package" key={item.name} data-reveal>
               <span>0{index + 1}</span><div><h3>{item.name}</h3><p>{item.summary}</p></div>
               <ul>{item.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
-              <strong>{item.price}</strong><Link className="text-link" href="/contact">Zapytaj ↗</Link>
+              <strong>{item.price}</strong><Link className="text-link" href="/contact">Zapytaj <ArrowIcon /></Link>
             </article>
           ))}
         </div>
@@ -59,7 +60,7 @@ export default function ServicesPage() {
               <p className="pricing-price"><strong>{item.price}</strong><span>{item.period}</span></p>
               <p>{item.summary}</p>
               <ul>{item.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
-              <Link className="pricing-cta" href="/contact">Zapytaj o pakiet <span aria-hidden="true">↗</span></Link>
+              <Link className="pricing-cta" href="/contact">Zapytaj o pakiet <ArrowIcon /></Link>
             </article>
           ))}
         </div>

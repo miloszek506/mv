@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowIcon } from "@/components/ArrowIcon";
 import { ProjectCard } from "@/components/ProjectCard";
 import { projects } from "@/data/projects";
 
@@ -31,7 +32,7 @@ export function ProjectsSection({ interactive = false, scrollDrivenDemo = false 
 
       <div className="real-projects-grid" data-real-projects>
         {realProjects.map((project) => (
-          <ProjectCard key={project.id} project={project} interactive={interactive} />
+          <ProjectCard key={project.id} project={project} interactive />
         ))}
       </div>
 
@@ -51,7 +52,7 @@ export function ProjectsSection({ interactive = false, scrollDrivenDemo = false 
 
       {!interactive ? (
         <Link className="section-cta text-link" href="/projects">
-          Zobacz całe portfolio <span aria-hidden="true">↗</span>
+          Zobacz całe portfolio <ArrowIcon />
         </Link>
       ) : null}
     </section>

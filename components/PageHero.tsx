@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowIcon } from "@/components/ArrowIcon";
 
 type PageHeroProps = {
   eyebrow: string;
@@ -24,7 +25,7 @@ export function PageHero({ eyebrow, title, description, index, variant, action }
         <p>{description}</p>
         {action ? (
           <Link className="circle-link" href={action.href}>
-            <span>{action.label}</span><span aria-hidden="true">↘</span>
+            <span>{action.label}</span><ArrowIcon />
           </Link>
         ) : null}
       </div>

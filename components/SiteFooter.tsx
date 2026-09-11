@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowIcon } from "@/components/ArrowIcon";
 import { contact, navigation } from "@/data/site-content";
 
 export function SiteFooter() {
@@ -7,7 +8,7 @@ export function SiteFooter() {
       <div className="footer-lead">
         <span className="eyebrow">Nowy projekt</span>
         <h2>Stwórzmy coś,<br />co działa.</h2>
-        <Link className="footer-cta" href="/contact">Porozmawiajmy <span aria-hidden="true">↗</span></Link>
+        <Link className="footer-cta" href="/contact">Porozmawiajmy <ArrowIcon /></Link>
       </div>
       <div className="footer-grid">
         <div className="footer-brand-block">
@@ -24,8 +25,8 @@ export function SiteFooter() {
           <span>{contact.city}</span>
         </div>
         <div className="footer-socials">
-          <a href={contact.instagram} target="_blank" rel="noreferrer">Instagram ↗</a>
-          <a href={contact.facebook} target="_blank" rel="noreferrer">Facebook ↗</a>
+          <a href={contact.instagram} target="_blank" rel="noopener noreferrer">Instagram <ArrowIcon /></a>
+          <a href={contact.facebook} target="_blank" rel="noopener noreferrer">Facebook <ArrowIcon /></a>
           <Link href={contact.privacyPolicy}>Polityka prywatności</Link>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
+import { ArrowIcon } from "@/components/ArrowIcon";
 import { FaqList } from "@/components/FaqList";
 import { PageHero } from "@/components/PageHero";
 import { PageShell } from "@/components/PageShell";
@@ -28,11 +29,11 @@ export default function ContactPage() {
           <p>Formularz przygotuje wiadomość w Twojej aplikacji pocztowej.</p>
         </div>
         <div className="contact-details" data-reveal>
-          <a href={`mailto:${contact.email}`}>{contact.email} ↗</a>
+          <a href={`mailto:${contact.email}`}>{contact.email} <ArrowIcon /></a>
           {contact.phones.map((phone, index) => <a href={contact.phoneHrefs[index]} key={phone}>{phone}</a>)}
           <span>{contact.city}</span>
-          <a href={contact.instagram} target="_blank" rel="noreferrer">Instagram ↗</a>
-          <a href={contact.facebook} target="_blank" rel="noreferrer">Facebook ↗</a>
+          <a href={contact.instagram} target="_blank" rel="noopener noreferrer">Instagram <ArrowIcon /></a>
+          <a href={contact.facebook} target="_blank" rel="noopener noreferrer">Facebook <ArrowIcon /></a>
         </div>
         <div data-reveal><ContactForm /></div>
       </section>
