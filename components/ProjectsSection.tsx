@@ -4,9 +4,10 @@ import { projects } from "@/data/projects";
 
 type ProjectsSectionProps = {
   interactive?: boolean;
+  scrollDrivenDemo?: boolean;
 };
 
-export function ProjectsSection({ interactive = false }: ProjectsSectionProps) {
+export function ProjectsSection({ interactive = false, scrollDrivenDemo = false }: ProjectsSectionProps) {
   const realProjects = projects.filter((project) => project.kind === "real");
   const demoProjects = projects.filter((project) => project.kind === "demo");
 
@@ -34,15 +35,17 @@ export function ProjectsSection({ interactive = false }: ProjectsSectionProps) {
         ))}
       </div>
 
-      <div className="demo-projects-heading" data-reveal>
-        <span className="eyebrow">Demo · Concept</span>
-        <p>Autorskie kierunki pokazujące możliwości projektowe MV Studio.</p>
-      </div>
-      <div className="demo-projects-viewport" data-demo-rail tabIndex={0} aria-label="Projekty demonstracyjne — przewiń poziomo">
-        <div className="demo-projects-rail">
-          {demoProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} interactive={interactive} />
-          ))}
+      <div className={`demo-projects-stage${scrollDrivenDemo ? " demo-projects-stage--scroll-driven" : ""}`} data-demo-stage={scrollDrivenDemo || undefined}>
+        <div className="demo-projects-heading" data-reveal>
+          <span className="eyebrow">Demo · Concept</span>
+          <p>Autorskie kierunki pokazujące możliwości projektowe MV Studio.</p>
+        </div>
+        <div className="demo-projects-viewport" data-demo-rail aria-label="Projekty demonstracyjne">
+          <div className="demo-projects-rail">
+            {demoProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} interactive={interactive} />
+            ))}
+          </div>
         </div>
       </div>
 

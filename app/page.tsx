@@ -61,18 +61,21 @@ const processSteps = [
 
 export default function Home() {
   return (
-    <main>
+    <main className="home-page">
       <AnimationController />
       <Header />
       <section className="hero" id="start" aria-labelledby="hero-title">
+        <span className="hero-orbit hero-orbit--large" aria-hidden="true" />
+        <span className="hero-orbit hero-orbit--small" aria-hidden="true" />
+        <span className="hero-signal" aria-hidden="true" />
         <div className="hero-kicker">
           <span className="status-dot" aria-hidden="true" />
           Bielsko-Biała · Projektowanie · Wdrożenia
         </div>
 
         <h1 id="hero-title" className="hero-title">
-          <span>MV</span>
-          <span className="hero-title-second">Studio</span>
+          <span className="hero-title-mask"><span className="hero-title-word">MV</span></span>
+          <span className="hero-title-mask hero-title-second"><span className="hero-title-word">Studio</span></span>
         </h1>
 
         <div className="hero-bottom">
@@ -164,7 +167,7 @@ export default function Home() {
         <Link className="section-cta text-link" href="/services">Zobacz pakiety i ceny ↗</Link>
       </section>
 
-      <ProjectsSection />
+      <ProjectsSection scrollDrivenDemo />
 
       <section className="process-section" id="proces" aria-labelledby="process-title">
         <div className="section-heading process-heading" data-reveal>

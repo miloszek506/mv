@@ -16,29 +16,78 @@ export function AnimationController() {
     const context = gsap.context(() => {
       const header = document.querySelector<HTMLElement>(".site-header");
       const hero = document.querySelector<HTMLElement>(".hero");
+      const homePage = document.querySelector<HTMLElement>(".home-page");
 
       if (header && hero) {
         const heroTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-        heroTimeline
-          .from(header, { opacity: 0, y: -18, duration: 0.55, clearProps: "transform", immediateRender: false })
-          .from(".hero-kicker", { opacity: 0, y: 18, duration: 0.45, immediateRender: false }, "-=0.25")
-          .from(
-            ".hero-title > span",
-            {
-              opacity: 0,
-              yPercent: isMobile ? 28 : 42,
-              duration: isMobile ? 0.65 : 0.9,
-              stagger: 0.1,
-              immediateRender: false,
+        if (homePage) {
+          const titleWords = hero.querySelectorAll<HTMLElement>(".hero-title-word");
+          const heroOrbits = hero.querySelectorAll<HTMLElement>(".hero-orbit, .hero-signal");
+
+          heroTimeline
+            .from(header, { opacity: 0, y: -18, duration: 0.55, clearProps: "transform", immediateRender: false })
+            .from(heroOrbits, { opacity: 0, scale: 0.72, duration: 1.1, stagger: 0.08 }, "-=0.25")
+            .from(".hero-kicker", { opacity: 0, y: 18, duration: 0.45, immediateRender: false }, "-=0.72")
+            .from(
+              titleWords,
+              {
+                yPercent: isMobile ? 108 : 116,
+                rotate: isMobile ? 3 : 5,
+                duration: isMobile ? 0.75 : 1.05,
+                stagger: 0.12,
+                immediateRender: false,
+              },
+              "-=0.25",
+            )
+            .from(".hero-bottom", { opacity: 0, y: 28, duration: 0.65, immediateRender: false }, "-=0.55");
+
+          gsap.to(hero.querySelector(".hero-title"), {
+            yPercent: isMobile ? -5 : -10,
+            ease: "none",
+            scrollTrigger: {
+              trigger: hero,
+              start: "top top",
+              end: "bottom top",
+              scrub: 0.7,
+              invalidateOnRefresh: true,
             },
-            "-=0.2",
-          )
-          .from(
-            ".hero-bottom",
-            { opacity: 0, y: 22, duration: 0.55, immediateRender: false },
-            "-=0.4",
-          );
+          });
+
+          gsap.to(heroOrbits, {
+            yPercent: isMobile ? -12 : -20,
+            rotate: isMobile ? 8 : 14,
+            ease: "none",
+            stagger: 0.05,
+            scrollTrigger: {
+              trigger: hero,
+              start: "top top",
+              end: "bottom top",
+              scrub: 0.9,
+              invalidateOnRefresh: true,
+            },
+          });
+        } else {
+          heroTimeline
+            .from(header, { opacity: 0, y: -18, duration: 0.55, clearProps: "transform", immediateRender: false })
+            .from(".hero-kicker", { opacity: 0, y: 18, duration: 0.45, immediateRender: false }, "-=0.25")
+            .from(
+              ".hero-title > span",
+              {
+                opacity: 0,
+                yPercent: isMobile ? 28 : 42,
+                duration: isMobile ? 0.65 : 0.9,
+                stagger: 0.1,
+                immediateRender: false,
+              },
+              "-=0.2",
+            )
+            .from(
+              ".hero-bottom",
+              { opacity: 0, y: 22, duration: 0.55, immediateRender: false },
+              "-=0.4",
+            );
+        }
       }
 
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((element) => {
@@ -94,9 +143,11 @@ export function AnimationController() {
         });
       }
 
-      const demoRail = document.querySelector<HTMLElement>("[data-demo-rail]");
+      const demoStage = document.querySelector<HTMLElement>("[data-demo-stage]");
+      const demoViewport = document.querySelector<HTMLElement>("[data-demo-rail]");
+      const demoRail = demoViewport?.querySelector<HTMLElement>(".demo-projects-rail");
       const demoProjectCards = gsap.utils.toArray<HTMLElement>("[data-demo-rail] .project-card");
-      if (demoRail && demoProjectCards.length > 0) {
+      if (!homePage && demoViewport && demoProjectCards.length > 0) {
         gsap.from(demoProjectCards, {
           opacity: 0,
           x: isMobile ? 0 : 70,
@@ -104,8 +155,94 @@ export function AnimationController() {
           duration: isMobile ? 0.5 : 0.75,
           stagger: 0.09,
           ease: "power3.out",
-          scrollTrigger: { trigger: demoRail, start: "top 88%", once: true },
+          scrollTrigger: { trigger: demoViewport, start: "top 88%", once: true },
         });
+      }
+
+      if (!isMobile && homePage && demoStage && demoViewport && demoRail && demoProjectCards.length > 0) {
+        const getTravelDistance = () => Math.max(0, demoRail.scrollWidth - demoViewport.clientWidth);
+        const horizontalTrack = gsap.to(demoRail, {
+          x: () => -getTravelDistance(),
+          ease: "none",
+          scrollTrigger: {
+            trigger: demoStage,
+            start: "top top",
+            end: () => `+=${Math.max(getTravelDistance() + window.innerHeight * 0.35, window.innerHeight)}`,
+            pin: demoViewport,
+            scrub: 0.8,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+          },
+        });
+
+        demoProjectCards.forEach((card) => {
+          const surface = card.querySelector<HTMLElement>(".project-card-surface");
+          const image = card.querySelector<HTMLElement>(".project-image");
+          if (!surface) return;
+
+          gsap.fromTo(
+            surface,
+            { rotateY: 8, rotateX: 2, scale: 0.92, opacity: 0.42 },
+            {
+              rotateY: -8,
+              rotateX: -2,
+              scale: 1,
+              opacity: 1,
+              ease: "none",
+              scrollTrigger: {
+                trigger: card,
+                containerAnimation: horizontalTrack,
+                start: "left 94%",
+                end: "right 8%",
+                scrub: true,
+              },
+            },
+          );
+
+          if (image) {
+            gsap.fromTo(
+              image,
+              { xPercent: -5, scale: 1.08 },
+              {
+                xPercent: 5,
+                scale: 1.03,
+                ease: "none",
+                scrollTrigger: {
+                  trigger: card,
+                  containerAnimation: horizontalTrack,
+                  start: "left 100%",
+                  end: "right 0%",
+                  scrub: true,
+                },
+              },
+            );
+          }
+        });
+      }
+
+      if (homePage) {
+        homePage.querySelectorAll<HTMLElement>(".section-heading h2").forEach((heading) => {
+          gsap.from(heading, {
+            clipPath: "inset(0 0 100% 0)",
+            y: isMobile ? 20 : 36,
+            duration: isMobile ? 0.55 : 0.8,
+            ease: "power3.out",
+            scrollTrigger: { trigger: heading, start: "top 88%", once: true },
+          });
+        });
+
+        const contactSection = homePage.querySelector<HTMLElement>(".contact-section");
+        if (contactSection) {
+          gsap.fromTo(
+            contactSection,
+            { clipPath: "inset(8% 0 0 0)" },
+            {
+              clipPath: "inset(0% 0 0 0)",
+              ease: "none",
+              scrollTrigger: { trigger: contactSection, start: "top 88%", end: "top 40%", scrub: 0.6 },
+            },
+          );
+        }
       }
 
       gsap.utils.toArray<HTMLElement>(".circle-link, .footer-cta, .pricing-cta").forEach((button) => {
