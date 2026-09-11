@@ -105,7 +105,7 @@ export function AnimationController() {
       });
 
       gsap.utils
-        .toArray<HTMLElement>(".service-row, .process-list li, .website-package")
+        .toArray<HTMLElement>(".service-row, .process-list li, .principles-list li, .website-package")
         .forEach((element) => {
           gsap.from(element, {
             opacity: 0,

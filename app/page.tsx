@@ -1,9 +1,18 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { ContactForm } from "@/components/ContactForm";
 import { AnimationController } from "@/components/AnimationController";
+import { FaqList } from "@/components/FaqList";
 import { SiteFooter } from "@/components/SiteFooter";
+
+export const metadata: Metadata = {
+  title: "Strony internetowe dla firm | Bielsko-Biała",
+  description:
+    "MV Studio projektuje, wdraża i utrzymuje nowoczesne strony internetowe dla małych i lokalnych firm z Bielska-Białej.",
+  alternates: { canonical: "/" },
+};
 
 const services = [
   {
@@ -57,7 +66,20 @@ const processSteps = [
     description:
       "Testujemy stronę na telefonie i komputerze, sprawdzamy formularze, linki i elementy techniczne.",
   },
+  {
+    number: "06",
+    title: "Wspieramy po starcie",
+    description:
+      "Po publikacji możemy pomóc w hostingu, aktualizacjach i dalszym rozwoju strony.",
+  },
 ];
+
+const reasons = [
+  "Projekt dopasowany do firmy",
+  "Czytelna strona na każdym ekranie",
+  "Szybkość i podstawy widoczności w Google",
+  "Wsparcie także po publikacji",
+] as const;
 
 export default function Home() {
   return (
@@ -82,7 +104,8 @@ export default function Home() {
           <p>
             Projektujemy i wdrażamy strony internetowe dla małych i lokalnych
             firm. Zaczynamy od poznania biznesu, a dopiero później przechodzimy
-            do projektu.
+            do projektu. Strona ma czytelnie pokazać ofertę i ułatwić klientom
+            kontakt.
           </p>
           <div className="hero-actions">
             <Link className="circle-link" href="/contact">
@@ -186,7 +209,26 @@ export default function Home() {
             </li>
           ))}
         </ol>
+        <Link className="section-cta text-link" href="/contact">Opowiedz nam o swojej stronie ↗</Link>
       </section>
+
+      <section className="principles-section home-principles" aria-labelledby="principles-title">
+        <div className="principles-intro" data-reveal>
+          <span className="eyebrow">Podejście MV Studio</span>
+          <h2 id="principles-title">Strona powinna dobrze wyglądać<br />i dobrze prowadzić dalej.</h2>
+          <p>
+            Łączymy indywidualny projekt z czytelną strukturą, responsywnym
+            układem i rozwiązaniami dopasowanymi do potrzeb firmy.
+          </p>
+        </div>
+        <ol className="principles-list">
+          {reasons.map((reason, index) => (
+            <li key={reason}><span>0{index + 1}</span>{reason}</li>
+          ))}
+        </ol>
+      </section>
+
+      <FaqList />
 
       <section className="contact-section" id="kontakt" aria-labelledby="contact-title">
         <div className="contact-intro" data-reveal>
