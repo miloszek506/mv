@@ -134,7 +134,8 @@ export const benvenutiCaseStudy: CaseStudy = {
     structureHeading: "Od pierwszego spojrzenia do wyboru pizzy.",
     liveHeading: "Poczuj kawałek Neapolu online.",
     liveDescription: "Zobacz kompletną realizację Benvenuti a Napoli i sprawdź, jak połączyliśmy włoski charakter marki z nowoczesnym doświadczeniem internetowym.",
-    imageAlt: "Benvenuti a Napoli — pizzeria w Bielsku-Białej",
+  image: "/projects/benvenuti-a-napoli.jpg",
+  imageAlt: "Benvenuti a Napoli — pizzeria w Bielsku-Białej",
 };
 
 export const caseStudies: CaseStudy[] = [avandisCaseStudy, benvenutiCaseStudy];

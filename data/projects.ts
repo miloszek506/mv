@@ -32,6 +32,7 @@ export const projects: Project[] = [
     name: benvenutiCaseStudy.name,
     category: "Strona dla pizzerii · Bielsko-Biała",
     description: benvenutiCaseStudy.heroDescription,
+    image: "/projects/benvenuti-a-napoli.jpg",
     href: benvenutiCaseStudy.liveUrl,
     caseStudySlug: benvenutiCaseStudy.slug,
     imageAlt: benvenutiCaseStudy.imageAlt,
