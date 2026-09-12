@@ -17,7 +17,7 @@ function PackageCard({ item }: { item: { name: string; price: string; audience: 
       <h3>{item.name}</h3>
       <p className="catalog-price">{item.price}</p>
       <p className="catalog-audience"><strong>Dla kogo:</strong> {item.audience}</p>
-      <ul>{item.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
+      <ul className="catalog-card-features">{item.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
       <Link className="catalog-cta" href="/contact">Zapytaj o pakiet <ArrowIcon /></Link>
     </article>
   );

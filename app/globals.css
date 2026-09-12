@@ -1577,7 +1577,8 @@ body.menu-open {
   display: none;
   pointer-events: none;
   position: fixed;
-  z-index: 1000;
+  /* Keep the visual cursor above consent dialogs without intercepting clicks. */
+  z-index: 2147483000;
 }
 
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
@@ -3319,6 +3320,13 @@ body.menu-open {
 .catalog-card--featured li,
 .catalog-card--featured li::before {
   color: #0a0a0a;
+}
+
+/* The feature list follows the green card's ink contrast, even after the
+   shared muted list styles are applied later in the cascade. */
+.catalog-card--featured .catalog-card-features > li,
+.catalog-card--featured .catalog-card-features > li::before {
+  color: #0a0a0a !important;
 }
 
 .catalog-card--featured .catalog-audience strong {

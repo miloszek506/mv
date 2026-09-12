@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowIcon } from "@/components/ArrowIcon";
 import { CookieSettingsButton } from "@/components/CookieSettingsButton";
 import { contact, navigation } from "@/data/site-content";
@@ -13,7 +14,9 @@ export function SiteFooter() {
       </div>
       <div className="footer-grid">
         <div className="footer-brand-block">
-          <Link className="brand" href="/" aria-label="MV Studio — strona główna">MV<span>•</span>STUDIO</Link>
+          <Link className="brand brand--logo" href="/" aria-label="MV Studio — strona główna">
+            <Image className="brand-logo" src="/images/mv-studio-logo.svg" alt="Logo MV Studio" width={147} height={85} />
+          </Link>
           <p>Projektujemy strony WordPress, sklepy WooCommerce i indywidualne realizacje premium w Next.js.</p>
         </div>
         <nav className="footer-links" aria-label="Nawigacja w stopce">
