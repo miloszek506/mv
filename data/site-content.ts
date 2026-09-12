@@ -1,7 +1,7 @@
 export const navigation = [
   { href: "/about", label: "O nas" },
   { href: "/projects", label: "Portfolio" },
-  { href: "/services", label: "Cennik" },
+  { href: "/services", label: "Oferta" },
   { href: "/contact", label: "Kontakt" },
 ] as const;
 
@@ -14,27 +14,6 @@ export const contact = {
   facebook: "https://www.facebook.com/profile.php?id=61591434677827",
   privacyPolicy: "/polityka-prywatnosci",
 } as const;
-
-export const services = [
-  {
-    number: "01",
-    title: "Projekt i wdrożenie strony",
-    description:
-      "Od pierwszego układu po działającą stronę. Indywidualny projekt, responsywny wygląd i przejrzysta nawigacja.",
-  },
-  {
-    number: "02",
-    title: "Optymalizacja",
-    description:
-      "Szybkie ładowanie, podstawy widoczności w Google oraz funkcje dopasowane do potrzeb biznesu.",
-  },
-  {
-    number: "03",
-    title: "Hosting i wsparcie",
-    description:
-      "Pomoc przy konfiguracji domeny i hostingu, certyfikat SSL, kopie zapasowe, aktualizacje i wsparcie techniczne.",
-  },
-] as const;
 
 export const processSteps = [
   {

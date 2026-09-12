@@ -7,34 +7,19 @@ import { ContactForm } from "@/components/ContactForm";
 import { AnimationController } from "@/components/AnimationController";
 import { FaqList } from "@/components/FaqList";
 import { SiteFooter } from "@/components/SiteFooter";
+import { serviceOffers } from "@/data/services";
 
 export const metadata: Metadata = {
-  title: "Strony internetowe dla firm | Bielsko-Biała",
+  title: "Strony WordPress, WooCommerce i Next.js | Bielsko-Biała",
   description:
-    "MV Studio projektuje, wdraża i utrzymuje nowoczesne strony internetowe dla małych i lokalnych firm z Bielska-Białej.",
+    "MV Studio tworzy strony WordPress, sklepy WooCommerce i strony premium w Next.js dla firm z Bielska-Białej i nie tylko.",
   alternates: { canonical: "/" },
+  openGraph: {
+    title: "Strony WordPress, WooCommerce i Next.js | MV Studio",
+    description: "Nowoczesne strony, sklepy i interaktywne doświadczenia cyfrowe dopasowane do celu biznesowego.",
+    url: "/",
+  },
 };
-
-const services = [
-  {
-    number: "01",
-    title: "Projekt i wdrożenie strony",
-    description:
-      "Od pierwszego układu po działającą stronę. Indywidualny projekt, responsywny wygląd i przejrzysta nawigacja.",
-  },
-  {
-    number: "02",
-    title: "Optymalizacja",
-    description:
-      "Szybkie ładowanie, podstawy widoczności w Google oraz funkcje dopasowane do potrzeb biznesu.",
-  },
-  {
-    number: "03",
-    title: "Hosting i wsparcie",
-    description:
-      "Pomoc przy konfiguracji domeny i hostingu, certyfikat SSL, kopie zapasowe, aktualizacje i wsparcie techniczne.",
-  },
-];
 
 const processSteps = [
   {
@@ -103,10 +88,9 @@ export default function Home() {
 
         <div className="hero-bottom">
           <p>
-            Projektujemy i wdrażamy strony internetowe dla małych i lokalnych
-            firm. Zaczynamy od poznania biznesu, a dopiero później przechodzimy
-            do projektu. Strona ma czytelnie pokazać ofertę i ułatwić klientom
-            kontakt.
+            Projektujemy strony WordPress, sklepy WooCommerce i indywidualne
+            doświadczenia w Next.js. Technologię dobieramy do sposobu pracy,
+            treści i celu firmy — nie odwrotnie.
           </p>
           <div className="hero-actions">
             <Link className="circle-link" href="/contact">
@@ -179,16 +163,16 @@ export default function Home() {
           </h2>
         </div>
         <div className="services-list">
-          {services.map((service) => (
+          {serviceOffers.map((service) => (
             <article className="service-row" key={service.number}>
               <span>{service.number}</span>
               <h3>{service.title}</h3>
-              <p>{service.description}</p>
+              <p>{service.summary}</p>
               <span className="service-arrow" aria-hidden="true"><ArrowIcon /></span>
             </article>
           ))}
         </div>
-        <Link className="section-cta text-link" href="/services">Zobacz pakiety i ceny <ArrowIcon /></Link>
+        <Link className="section-cta text-link" href="/services">Poznaj ofertę i technologie <ArrowIcon /></Link>
       </section>
 
       <ProjectsSection scrollDrivenDemo />

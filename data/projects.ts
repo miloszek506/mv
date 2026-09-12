@@ -1,3 +1,5 @@
+import { avandisCaseStudy, benvenutiCaseStudy } from "@/data/case-studies";
+
 export type Project = {
   id: string;
   name: string;
@@ -7,37 +9,38 @@ export type Project = {
   image?: string;
   previewVideo?: string;
   href?: string;
+  caseStudySlug?: string;
   imageAlt: string;
   kind: "real" | "demo";
 };
 
 export const projects: Project[] = [
   {
-    id: "01",
-    name: "Avandis",
-    category: "Realizacja · Projekt dla klienta",
-    year: "2026",
-    description:
-      "Projekt dla klienta przygotowany przez MV Studio. Pełną wersję można zobaczyć bezpośrednio pod adresem avandis.pl.",
-    image: "/projects/avandis.png",
-    previewVideo: "/media/awandis-scroll-preview.webm",
-    href: "https://avandis.pl",
-    imageAlt: "Widok strony internetowej Avandis",
+    id: avandisCaseStudy.projectId,
+    name: avandisCaseStudy.name,
+    category: "Strona internetowa · WordPress",
+    year: avandisCaseStudy.year,
+    description: avandisCaseStudy.heroDescription,
+    image: avandisCaseStudy.image,
+    href: avandisCaseStudy.liveUrl,
+    caseStudySlug: avandisCaseStudy.slug,
+    imageAlt: avandisCaseStudy.imageAlt,
     kind: "real",
   },
   {
-    id: "02",
-    name: "Benvenuti a Napoli",
-    category: "Realizacja · Pizzeria w Bielsku-Białej",
-    description: "Projekt strony dla pizzerii Benvenuti a Napoli w Bielsku-Białej.",
-    href: "https://benvenutianapoli.pl",
-    imageAlt: "Benvenuti a Napoli — pizzeria w Bielsku-Białej",
+    id: benvenutiCaseStudy.projectId,
+    name: benvenutiCaseStudy.name,
+    category: "Strona dla pizzerii · Bielsko-Biała",
+    description: benvenutiCaseStudy.heroDescription,
+    href: benvenutiCaseStudy.liveUrl,
+    caseStudySlug: benvenutiCaseStudy.slug,
+    imageAlt: benvenutiCaseStudy.imageAlt,
     kind: "real",
   },
   {
     id: "03",
     name: "Restauracja Quaint",
-    category: "Demo · Concept · Gastronomia",
+    category: "Gastronomia · Concept",
     year: "2026",
     description:
       "Autorska koncepcja strony restauracji przygotowana przez MV Studio w celu prezentacji możliwości projektowych.",
@@ -48,7 +51,7 @@ export const projects: Project[] = [
   {
     id: "04",
     name: "Fryzjer Nova",
-    category: "Demo · Concept · Usługi",
+    category: "Usługi · Concept",
     year: "2026",
     description:
       "Autorska koncepcja strony salonu fryzjerskiego przygotowana przez MV Studio jako projekt demonstracyjny.",
@@ -59,7 +62,7 @@ export const projects: Project[] = [
   {
     id: "05",
     name: "MechanikBB",
-    category: "Demo · Concept · Motoryzacja",
+    category: "Motoryzacja · Concept",
     year: "2026",
     description:
       "Autorska koncepcja strony warsztatu przygotowana przez MV Studio w celu pokazania kierunku wizualnego.",
@@ -70,7 +73,7 @@ export const projects: Project[] = [
   {
     id: "06",
     name: "Firma budowlana",
-    category: "Demo · Concept · Budownictwo",
+    category: "Budownictwo · Concept",
     year: "2026",
     description:
       "Autorska koncepcja strony firmy budowlanej przygotowana przez MV Studio jako projekt demonstracyjny.",

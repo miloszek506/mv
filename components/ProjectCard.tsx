@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ArrowIcon } from "@/components/ArrowIcon";
@@ -17,7 +18,9 @@ export function ProjectCard({ project, interactive = true }: ProjectCardProps) {
   const reflectionRef = useRef<HTMLSpanElement>(null);
   const previewRef = useRef<HTMLVideoElement>(null);
   const isReal = project.kind === "real";
-  const projectHref = interactive && isReal ? project.href : undefined;
+  const projectHref = interactive && isReal && project.caseStudySlug
+    ? `/projects/${project.caseStudySlug}`
+    : undefined;
 
   const canPlayPreview = () =>
     typeof window !== "undefined" &&
@@ -107,7 +110,10 @@ export function ProjectCard({ project, interactive = true }: ProjectCardProps) {
           aria-hidden="true"
         />
       ) : null}
-      {projectHref ? <span className="project-open" aria-hidden="true">Otwórz <ArrowIcon /></span> : null}
+      <span className={`project-kind-badge project-kind-badge--${project.kind}`}>
+        {isReal ? "Realizacja dla klienta" : "Projekt demonstracyjny"}
+      </span>
+      {projectHref ? <span className="project-open" aria-hidden="true">Zobacz case study <ArrowIcon /></span> : null}
     </>
   );
 
@@ -115,19 +121,17 @@ export function ProjectCard({ project, interactive = true }: ProjectCardProps) {
     <article className={`project-card project-card--${project.kind}`} ref={cardRef}>
       <div className="project-card-surface" ref={surfaceRef}>
         {projectHref ? (
-          <a
+          <Link
             className={`project-image-link${project.previewVideo ? " project-image-link--with-preview" : ""}`}
             href={projectHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Otwórz projekt ${project.name} w nowej karcie`}
+            aria-label={`Zobacz case study projektu ${project.name}`}
             onPointerEnter={playPreview}
             onPointerLeave={pausePreview}
             onFocus={playPreview}
             onBlur={pausePreview}
           >
             {visual}
-          </a>
+          </Link>
         ) : (
           <div
             className={`project-image-link project-image-static${project.previewVideo ? " project-image-link--with-preview" : ""}`}

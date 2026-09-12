@@ -24,9 +24,9 @@ export function ProjectsSection({ interactive = false, scrollDrivenDemo = false 
           <h2 id="projects-title">Realizacje i kierunki<br />projektowe.</h2>
         </div>
         <p>
-          Avandis i Benvenuti a Napoli to projekty dla klientów. Pozycje oznaczone
-          jako Demo · Concept są autorskimi koncepcjami MV Studio, a nie realizacjami
-          dla rzeczywistych klientów.
+          Najpierw pokazujemy prawdziwe realizacje i ich proces. Dalej znajdują się
+          wyraźnie oznaczone, nieklikalne koncepcje demonstracyjne prezentujące
+          możliwe kierunki wizualne.
         </p>
       </div>
 
@@ -38,7 +38,7 @@ export function ProjectsSection({ interactive = false, scrollDrivenDemo = false 
 
       <div className={`demo-projects-stage${scrollDrivenDemo ? " demo-projects-stage--scroll-driven" : ""}`} data-demo-stage={scrollDrivenDemo || undefined}>
         <div className="demo-projects-heading" data-reveal>
-          <span className="eyebrow">Demo · Concept</span>
+          <span className="eyebrow">Projekty demonstracyjne</span>
           <p>Autorskie kierunki pokazujące możliwości projektowe MV Studio.</p>
         </div>
         <div className="demo-projects-viewport" data-demo-rail aria-label="Projekty demonstracyjne">

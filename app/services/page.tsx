@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowIcon } from "@/components/ArrowIcon";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { PageHero } from "@/components/PageHero";
 import { PageShell } from "@/components/PageShell";
+import { ServiceOfferGrid } from "@/components/ServiceOfferGrid";
+import { StructuredData } from "@/components/StructuredData";
+import { serviceOffers, technologyChoices } from "@/data/services";
 import {
   additionalMaintenanceWork,
   maintenancePackages,
@@ -11,22 +15,64 @@ import {
 } from "@/data/site-content";
 
 export const metadata: Metadata = {
-  title: "Cennik stron i opieki WordPress",
-  description: "Cennik MV Studio: tworzenie stron internetowych oraz pakiety hostingu, utrzymania, aktualizacji i opieki nad stroną WordPress.",
+  title: "WordPress, WooCommerce i strony Next.js | Oferta",
+  description: "Oferta MV Studio: strony WordPress, sklepy WooCommerce, strony premium Next.js i TypeScript, animacje GSAP oraz proste elementy 3D.",
   alternates: { canonical: "/services" },
+  openGraph: {
+    title: "WordPress, WooCommerce i strony Next.js | MV Studio",
+    description: "Dobieramy technologię strony do celu: od łatwego w edycji WordPressa po indywidualne realizacje Next.js.",
+    url: "/services",
+  },
 };
 
 export default function ServicesPage() {
   return (
     <PageShell>
+      <StructuredData data={{
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: "Oferta MV Studio",
+        itemListElement: serviceOffers.map((service, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: service.title,
+          url: `https://mvstudio.pl/services/#${service.slug}`,
+        })),
+      }} />
+      <Breadcrumbs items={[{ label: "Strona główna", href: "/" }, { label: "Oferta" }]} />
       <PageHero
-        eyebrow="Cennik · Strony internetowe i opieka"
-        title={["Cennik stron"]}
-        description="Projektujemy strony internetowe i zapewniamy ich regularne utrzymanie — od hostingu i aktualizacji WordPressa po bieżącą opiekę techniczną."
+        eyebrow="Oferta · Technologia dopasowana do celu"
+        title={["Oferta", "MV Studio"]}
+        description="Tworzymy łatwe w zarządzaniu strony WordPress, sklepy WooCommerce i indywidualne realizacje premium w Next.js. Najpierw wybieramy właściwe rozwiązanie, później projektujemy doświadczenie."
         index="04"
         variant="services"
         action={{ href: "/contact", label: "Zapytaj o wycenę" }}
       />
+      <section className="offer-section" aria-labelledby="offer-title">
+        <div className="section-heading offer-heading" data-reveal>
+          <span className="eyebrow">Specjalizacje MV Studio</span>
+          <h2 id="offer-title">Jedna marka.<br />Właściwe narzędzie.</h2>
+          <p>
+            Nie dopasowujemy każdego projektu do jednej technologii. Zakres,
+            sposób edycji treści, wydajność i potrzebne interakcje decydują o rozwiązaniu.
+          </p>
+        </div>
+        <ServiceOfferGrid />
+      </section>
+      <section className="technology-choice-section" aria-labelledby="technology-choice-title" data-cursor-theme="dark">
+        <div className="section-heading" data-reveal>
+          <span className="eyebrow">WordPress czy Next.js?</span>
+          <h2 id="technology-choice-title">Decyzja zaczyna się<br />od sposobu pracy.</h2>
+        </div>
+        <div className="technology-choice-grid">
+          {technologyChoices.map((choice) => (
+            <article key={choice.title} data-reveal>
+              <h3>{choice.title}</h3>
+              <p>{choice.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
       <section className="website-pricing-section" aria-labelledby="website-pricing-title">
         <div className="section-heading" data-reveal>
           <span className="eyebrow">Nowa strona</span>

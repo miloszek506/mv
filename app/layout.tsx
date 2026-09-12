@@ -11,14 +11,14 @@ export const metadata: Metadata = {
     template: "%s — MV Studio",
   },
   description:
-    "MV Studio projektuje i wdraża strony internetowe oraz zapewnia hosting, utrzymanie i opiekę nad stronami WordPress w Bielsku-Białej.",
+    "MV Studio projektuje strony WordPress, sklepy WooCommerce i indywidualne strony premium w Next.js oraz TypeScript.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "MV Studio — Strony internetowe dla firm",
     description:
-      "Nowoczesne strony internetowe tworzone z myślą o Twojej firmie.",
+      "Strony WordPress, sklepy WooCommerce i dopracowane doświadczenia cyfrowe tworzone z myślą o celu firmy.",
     url: "https://mvstudio.pl",
     siteName: "MV Studio",
     locale: "pl_PL",

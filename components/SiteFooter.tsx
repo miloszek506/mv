@@ -14,7 +14,7 @@ export function SiteFooter() {
       <div className="footer-grid">
         <div className="footer-brand-block">
           <Link className="brand" href="/" aria-label="MV Studio — strona główna">MV<span>•</span>STUDIO</Link>
-          <p>Projektujemy i wdrażamy nowoczesne strony internetowe dla małych i lokalnych firm.</p>
+          <p>Projektujemy strony WordPress, sklepy WooCommerce i indywidualne realizacje premium w Next.js.</p>
         </div>
         <nav className="footer-links" aria-label="Nawigacja w stopce">
           <Link href="/">Home</Link>
