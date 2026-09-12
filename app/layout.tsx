@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { CookieConsent } from "@/components/CookieConsent";
 import { CustomCursor } from "@/components/CustomCursor";
 import "./globals.css";
 
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="pl">
-      <body>{children}<CustomCursor /></body>
+      <body>{children}<CookieConsent /><CustomCursor /></body>
     </html>
   );
 }

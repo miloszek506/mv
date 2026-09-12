@@ -17,6 +17,7 @@ export function ProjectCard({ project, interactive = true }: ProjectCardProps) {
   const reflectionRef = useRef<HTMLSpanElement>(null);
   const previewRef = useRef<HTMLVideoElement>(null);
   const isReal = project.kind === "real";
+  const projectHref = interactive && isReal ? project.href : undefined;
 
   const canPlayPreview = () =>
     typeof window !== "undefined" &&
@@ -106,17 +107,17 @@ export function ProjectCard({ project, interactive = true }: ProjectCardProps) {
           aria-hidden="true"
         />
       ) : null}
-      {interactive && project.href ? <span className="project-open" aria-hidden="true">Otwórz <ArrowIcon /></span> : null}
+      {projectHref ? <span className="project-open" aria-hidden="true">Otwórz <ArrowIcon /></span> : null}
     </>
   );
 
   return (
     <article className={`project-card project-card--${project.kind}`} ref={cardRef}>
       <div className="project-card-surface" ref={surfaceRef}>
-        {interactive && project.href ? (
+        {projectHref ? (
           <a
             className={`project-image-link${project.previewVideo ? " project-image-link--with-preview" : ""}`}
-            href={project.href}
+            href={projectHref}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Otwórz projekt ${project.name} w nowej karcie`}

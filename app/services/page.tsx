@@ -21,7 +21,7 @@ export default function ServicesPage() {
     <PageShell>
       <PageHero
         eyebrow="Cennik · Strony internetowe i opieka"
-        title={["Cennik stron", "internetowych"]}
+        title={["Cennik stron"]}
         description="Projektujemy strony internetowe i zapewniamy ich regularne utrzymanie — od hostingu i aktualizacji WordPressa po bieżącą opiekę techniczną."
         index="04"
         variant="services"

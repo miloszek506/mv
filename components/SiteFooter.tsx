@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowIcon } from "@/components/ArrowIcon";
+import { CookieSettingsButton } from "@/components/CookieSettingsButton";
 import { contact, navigation } from "@/data/site-content";
 
 export function SiteFooter() {
@@ -28,6 +29,8 @@ export function SiteFooter() {
           <a href={contact.instagram} target="_blank" rel="noopener noreferrer">Instagram <ArrowIcon /></a>
           <a href={contact.facebook} target="_blank" rel="noopener noreferrer">Facebook <ArrowIcon /></a>
           <Link href={contact.privacyPolicy}>Polityka prywatności</Link>
+          <Link href="/polityka-cookies">Polityka cookies</Link>
+          <CookieSettingsButton />
         </div>
       </div>
       <p className="footer-copyright">© 2026 MV Studio. Wszelkie prawa zastrzeżone.</p>

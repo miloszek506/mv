@@ -1,0 +1,49 @@
+name: Wdrożenie MV Studio na IQhost
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: iqhost-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build i wdrożenie
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Pobierz kod
+        uses: actions/checkout@v6
+
+      - name: Skonfiguruj Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Zainstaluj zależności
+        run: npm ci
+
+      - name: Zbuduj stronę statyczną
+        run: npm run build
+
+      - name: Wdróż na IQhost przez FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.IQHOST_FTP_SERVER }}
+          port: 21
+          protocol: ftps
+          security: strict
+          username: ${{ secrets.IQHOST_FTP_USERNAME }}
+          password: ${{ secrets.IQHOST_FTP_PASSWORD }}
+          local-dir: ./out/
+          server-dir: ${{ secrets.IQHOST_FTP_SERVER_DIR }}
+          log-level: minimal

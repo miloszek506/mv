@@ -3,7 +3,7 @@ import { ArrowIcon } from "@/components/ArrowIcon";
 
 type PageHeroProps = {
   eyebrow: string;
-  title: readonly [string, string];
+  title: readonly [string, string?];
   description: string;
   index: string;
   variant: "about" | "projects" | "services" | "contact";
@@ -19,7 +19,7 @@ export function PageHero({ eyebrow, title, description, index, variant, action }
       </div>
       <h1 className="hero-title subpage-title" id="page-title">
         <span>{title[0]}</span>
-        <span className="hero-title-second">{title[1]}</span>
+        {title[1] ? <span className="hero-title-second">{title[1]}</span> : null}
       </h1>
       <div className="hero-bottom subpage-hero-bottom">
         <p>{description}</p>
