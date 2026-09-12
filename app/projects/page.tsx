@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     title: "Portfolio i case studies | MV Studio",
     description: "Prawdziwe realizacje dla klientów oraz wyraźnie oznaczone koncepcje demonstracyjne MV Studio.",
     url: "/projects",
+    images: [{ url: "/images/mv-studio-og.png", width: 3024, height: 1718, alt: "MV Studio — nowoczesne strony internetowe" }],
   },
 };
 

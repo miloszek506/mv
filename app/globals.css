@@ -6,6 +6,8 @@
   --accent: #82FF1F;
   --muted: #a7a49d;
   --line: rgba(243, 240, 232, 0.2);
+  --page-gutter: clamp(1.25rem, 3vw, 3.5rem);
+  --page-max: 90rem;
 }
 
 * {
@@ -3152,6 +3154,408 @@ body.menu-open {
   .breadcrumbs a,
   .project-image,
   .project-card-surface {
+    transition: none;
+  }
+}
+
+/* Pricing catalogue */
+.pricing-catalog {
+  background: #141414;
+  overflow: hidden;
+  padding: clamp(5rem, 11vw, 10rem) var(--page-gutter);
+}
+
+.pricing-catalog-intro {
+  align-items: end;
+  display: grid;
+  gap: clamp(2rem, 6vw, 8rem);
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.7fr);
+  margin: 0 auto clamp(5rem, 11vw, 10rem);
+  max-width: var(--page-max);
+}
+
+.pricing-catalog-intro h2,
+.pricing-group-heading h2,
+.pricing-notes h2,
+.development-section h2 {
+  font-size: clamp(2.5rem, 5.4vw, 6.5rem);
+  letter-spacing: -0.055em;
+  line-height: 0.94;
+  margin: 1.5rem 0 0;
+}
+
+.pricing-catalog-intro > p,
+.pricing-group-heading > p {
+  color: var(--muted);
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  line-height: 1.55;
+  margin: 0 0 0.4rem;
+  max-width: 34rem;
+}
+
+.pricing-group {
+  border-top: 1px solid var(--line);
+  margin: 0 auto;
+  max-width: var(--page-max);
+  padding-top: clamp(2rem, 4vw, 4rem);
+}
+
+.pricing-group + .pricing-group,
+.development-section,
+.pricing-notes {
+  margin-top: clamp(6rem, 12vw, 12rem);
+}
+
+.pricing-group-heading {
+  display: grid;
+  gap: 1.5rem 3rem;
+  grid-template-columns: 0.8fr 1.2fr 1fr;
+  margin-bottom: clamp(2.5rem, 5vw, 5rem);
+}
+
+.pricing-group-heading .eyebrow {
+  align-self: start;
+}
+
+.pricing-group-heading h2 {
+  margin: 0;
+}
+
+.catalog-grid {
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.catalog-grid--single {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 48rem;
+}
+
+.catalog-card {
+  background: #1c1c1c;
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  min-height: 34rem;
+  padding: clamp(1.5rem, 3vw, 3rem);
+  position: relative;
+  transition: border-color 300ms ease, transform 300ms ease, background-color 300ms ease;
+}
+
+.catalog-card:hover {
+  border-color: rgba(130, 255, 31, 0.7);
+  transform: translateY(-0.35rem);
+}
+
+.catalog-card--featured {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--ink);
+  transform: translateY(-1rem);
+}
+
+.catalog-card--featured:hover {
+  border-color: var(--accent);
+  transform: translateY(-1.35rem);
+}
+
+.catalog-badge {
+  background: var(--ink);
+  color: var(--accent);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  padding: 0.55rem 0.75rem;
+  position: absolute;
+  right: 1.25rem;
+  text-transform: uppercase;
+  top: 1.25rem;
+}
+
+.catalog-card-top {
+  color: var(--muted);
+  display: flex;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  justify-content: space-between;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.catalog-card h3 {
+  font-size: clamp(1.6rem, 2.6vw, 2.6rem);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin: clamp(3rem, 6vw, 6rem) 0 1.5rem;
+  max-width: 16rem;
+}
+
+.catalog-price {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: clamp(1.35rem, 2.2vw, 2.1rem);
+  font-weight: 700;
+  margin: 0;
+}
+
+.catalog-card--featured .catalog-price {
+  color: var(--ink);
+}
+
+.catalog-audience {
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 1.4rem 0 2rem;
+  min-height: 4.5rem;
+}
+
+.catalog-audience strong {
+  color: var(--paper);
+}
+
+.catalog-card--featured .catalog-card-top,
+.catalog-card--featured .catalog-audience,
+.catalog-card--featured li,
+.catalog-card--featured li::before {
+  color: #0a0a0a;
+}
+
+.catalog-card--featured .catalog-audience strong {
+  color: #0a0a0a;
+}
+
+.catalog-card ul,
+.pricing-notes ul {
+  border-top: 1px solid var(--line);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.catalog-card li,
+.pricing-notes li {
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  line-height: 1.4;
+  padding: 0.7rem 0 0.7rem 1.15rem;
+  position: relative;
+}
+
+.catalog-card li::before,
+.pricing-notes li::before {
+  color: var(--accent);
+  content: "•";
+  left: 0;
+  position: absolute;
+}
+
+.catalog-card--featured li::before {
+  color: #0a0a0a;
+}
+
+.catalog-cta {
+  align-items: center;
+  background: var(--accent);
+  color: var(--ink);
+  display: inline-flex;
+  font-size: 0.78rem;
+  font-weight: 700;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: auto;
+  padding: 1rem 1.25rem;
+  text-transform: uppercase;
+  transition: gap 220ms ease, background-color 220ms ease;
+}
+
+.catalog-cta:hover {
+  gap: 1.1rem;
+}
+
+.catalog-card--featured .catalog-cta {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.pricing-note {
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 2rem 0 0;
+  max-width: 50rem;
+  padding-top: 1.25rem;
+}
+
+.pricing-note strong {
+  color: var(--paper);
+}
+
+.pricing-catalog > .maintenance-pricing {
+  margin-left: calc(-1 * var(--page-gutter));
+  margin-right: calc(-1 * var(--page-gutter));
+  margin-top: clamp(6rem, 12vw, 12rem);
+}
+
+.maintenance-card.is-featured > p,
+.maintenance-card.is-featured li {
+  color: #0a0a0a;
+}
+
+.development-section {
+  border-top: 1px solid var(--line);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--page-max);
+  padding-top: clamp(2rem, 4vw, 4rem);
+}
+
+.development-section .pricing-group-heading {
+  grid-template-columns: 0.8fr 1.2fr;
+}
+
+.development-grid {
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.development-grid article {
+  border: 1px solid var(--line);
+  min-height: 14rem;
+  padding: clamp(1.5rem, 3vw, 2.75rem);
+}
+
+.development-grid article > span {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.development-grid h3 {
+  font-size: 1.4rem;
+  margin: 2rem 0 0.65rem;
+}
+
+.development-grid p {
+  color: var(--muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.pricing-notes {
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--page-max);
+}
+
+.pricing-notes article {
+  border: 1px solid var(--line);
+  padding: clamp(1.5rem, 4vw, 4rem);
+}
+
+.pricing-notes h2 {
+  font-size: clamp(2rem, 3.5vw, 4rem);
+  margin-bottom: 2.5rem;
+}
+
+.pricing-notes li {
+  padding-bottom: 0.85rem;
+  padding-top: 0.85rem;
+}
+
+.pricing-final-cta {
+  background: var(--accent);
+  color: var(--ink);
+  margin: clamp(6rem, 12vw, 12rem) auto 0;
+  max-width: var(--page-max);
+  min-height: 32rem;
+  padding: clamp(2rem, 6vw, 6rem);
+}
+
+.pricing-final-cta .eyebrow {
+  color: var(--ink);
+}
+
+.pricing-final-cta h2 {
+  font-size: clamp(3rem, 7vw, 8rem);
+  letter-spacing: -0.06em;
+  line-height: 0.9;
+  margin: 2rem 0;
+}
+
+.pricing-final-cta p {
+  line-height: 1.5;
+  max-width: 33rem;
+}
+
+.pricing-final-cta .circle-link {
+  background: var(--ink);
+  color: var(--paper);
+  margin-top: 2rem;
+}
+
+@media (max-width: 900px) {
+  .pricing-catalog-intro,
+  .pricing-group-heading {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .pricing-group-heading > p {
+    grid-column: 2;
+  }
+
+  .catalog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .catalog-card,
+  .catalog-card--featured,
+  .catalog-card--featured:hover {
+    min-height: auto;
+    transform: none;
+  }
+
+  .catalog-card:hover {
+    transform: translateY(-0.2rem);
+  }
+
+  .catalog-card h3 {
+    margin-top: 2.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .pricing-catalog-intro,
+  .pricing-group-heading,
+  .development-section .pricing-group-heading,
+  .development-grid,
+  .pricing-notes {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-catalog-intro > p,
+  .pricing-group-heading > p {
+    grid-column: auto;
+  }
+
+  .pricing-catalog-intro h2,
+  .pricing-group-heading h2 {
+    font-size: clamp(2.5rem, 13vw, 4.5rem);
+  }
+
+  .pricing-final-cta h2 {
+    font-size: clamp(3rem, 15vw, 5.5rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .catalog-card,
+  .catalog-cta {
     transition: none;
   }
 }

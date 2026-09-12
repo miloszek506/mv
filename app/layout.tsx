@@ -23,6 +23,16 @@ export const metadata: Metadata = {
     siteName: "MV Studio",
     locale: "pl_PL",
     type: "website",
+    images: [{
+      url: "/images/mv-studio-og.png",
+      width: 3024,
+      height: 1718,
+      alt: "MV Studio — nowoczesne strony internetowe",
+    }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/images/mv-studio-og.png"],
   },
   robots: { index: true, follow: true },
 };

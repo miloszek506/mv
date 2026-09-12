@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: CaseStudyPageProps): Promise<
       title: `${study.name} — case study | MV Studio`,
       description: study.heroDescription,
       url: `/projects/${study.slug}`,
-      images: study.image ? [{ url: study.image, alt: study.imageAlt }] : undefined,
+      images: [{ url: "/images/mv-studio-og.png", width: 3024, height: 1718, alt: "MV Studio — nowoczesne strony internetowe" }],
     },
   };
 }

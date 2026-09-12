@@ -39,42 +39,6 @@ export const processSteps = [
   },
 ] as const;
 
-export const websitePackages = [
-  {
-    name: "Start",
-    price: "od 800 zł",
-    summary: "Dla małych firm potrzebujących zwartej strony typu one-page.",
-    features: [
-      "Strona one-page do 10 sekcji",
-      "Responsywny układ",
-      "Formularz kontaktowy i mapa Google",
-      "Podstawowa optymalizacja SEO",
-    ],
-  },
-  {
-    name: "Business",
-    price: "od 1500 zł",
-    summary: "Dla lokalnych firm, które potrzebują rozbudowanej prezentacji oferty.",
-    features: [
-      "Do 5 podstron",
-      "Indywidualny projekt",
-      "Formularze, opinie, galerie i Google Maps",
-      "Podstawowa optymalizacja pod Google",
-    ],
-  },
-  {
-    name: "Premium",
-    price: "od 2500 zł",
-    summary: "Dla projektów z większą liczbą treści i funkcji.",
-    features: [
-      "8 lub więcej podstron",
-      "Portfolio, blog lub inne rozbudowane sekcje",
-      "Animacje, formularze albo rezerwacje",
-      "Optymalizacja wydajności i rozszerzone SEO",
-    ],
-  },
-] as const;
-
 export const maintenancePackages = [
   {
     name: "Start",

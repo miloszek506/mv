@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     title: "Strony WordPress, WooCommerce i Next.js | MV Studio",
     description: "Nowoczesne strony, sklepy i interaktywne doświadczenia cyfrowe dopasowane do celu biznesowego.",
     url: "/",
+    images: [{ url: "/images/mv-studio-og.png", width: 3024, height: 1718, alt: "MV Studio — nowoczesne strony internetowe" }],
   },
 };
 
