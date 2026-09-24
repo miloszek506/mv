@@ -598,6 +598,19 @@ textarea {
   max-width: 34rem;
 }
 
+.service-demo-note {
+  display: block;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  margin-top: 1rem;
+  max-width: 34rem;
+}
+
+.service-demo-link {
+  display: inline-flex;
+  margin-top: 1.2rem;
+}
+
 .service-row:hover p,
 .service-row:hover > span:first-child {
   color: currentColor;
@@ -1669,6 +1682,41 @@ body.menu-open {
 
 .real-projects-grid .project-image-link {
   aspect-ratio: 1.55 / 1;
+}
+
+.lab-demo-panel {
+  align-items: end;
+  background: linear-gradient(135deg, rgba(130, 255, 31, 0.12), rgba(130, 255, 31, 0.03));
+  border: 1px solid rgba(130, 255, 31, 0.45);
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  margin-top: clamp(3rem, 6vw, 6rem);
+  padding: clamp(1.5rem, 3vw, 3rem);
+}
+
+.lab-demo-panel .eyebrow {
+  color: var(--accent);
+}
+
+.lab-demo-panel h3 {
+  font-size: clamp(2rem, 4vw, 4.8rem);
+  letter-spacing: -0.06em;
+  line-height: 0.95;
+  margin: 0.75rem 0 1rem;
+  max-width: 14ch;
+}
+
+.lab-demo-panel p {
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0;
+  max-width: 45rem;
+}
+
+.lab-demo-panel-link {
+  align-self: end;
+  white-space: nowrap;
 }
 
 .project-card-surface {
@@ -3065,6 +3113,14 @@ body.menu-open {
 }
 
 @media (max-width: 760px) {
+  .lab-demo-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .lab-demo-panel-link {
+    justify-self: start;
+  }
+
   .breadcrumbs {
     top: 5.8rem;
   }

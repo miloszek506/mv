@@ -1,0 +1,58 @@
+.lab { --lab-line: #ffffff21; background: #0a0a0a; color: #f3f0e8; overflow: clip; }
+.header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.8rem 4vw; border-bottom: 1px solid var(--lab-line); }
+.header > a:first-child { font-size: 1.6rem; font-weight: 800; letter-spacing: -.08em; }
+.header b { color: #82ff1f; margin-left: .6rem; font-weight: 400; }
+.header > span, .header > a:last-child, .eyebrow, .heroFoot, .stageLabel, .footer, .pause { font-family: ui-monospace, monospace; font-size: .68rem; letter-spacing: .08em; }
+.header > a:last-child { border-bottom: 1px solid #82ff1f; padding: .6rem 0; }
+.story { position: relative; display: grid; grid-template-columns: 1fr 1fr; }
+.visual { position: sticky; top: 0; height: 100svh; grid-column: 2; grid-row: 1; padding: 2rem; display: flex; flex-direction: column; background: #101210; border-left: 1px solid var(--lab-line); }
+.stage { position: relative; min-height: 0; flex: 1; isolation: isolate; }
+.canvas { position: absolute; inset: 0; z-index: 1; }
+.fallback { position: absolute; inset: 0; width: 100%; height: 100%; }
+.fallbackLabel { position: absolute; bottom: 3rem; left: 0; right: 0; text-align: center; font-size: .7rem; color: #a7a49d; }
+.stageIndex { position: absolute; top: 5%; left: 1rem; font-size: clamp(3rem, 7vw, 8rem); letter-spacing: -.09em; color: #f3f0e826; z-index: 2; pointer-events: none; }
+.stageLabel { position: absolute; bottom: 1rem; left: 0; right: 0; z-index: 2; display: flex; justify-content: space-between; pointer-events: none; color: #b2b8ad; }
+.pause { align-self: center; border: 1px solid #ffffff40; padding: .7rem 1rem; color: #cccfc8; background: transparent; cursor: pointer; min-height: 44px; }
+.narrative { grid-column: 1; grid-row: 1; min-width: 0; }
+.hero { min-height: calc(100svh - 6rem); padding: 4rem 4vw 2rem; display: flex; flex-direction: column; align-items: start; }
+.eyebrow { color: #acb0a7; display: flex; align-items: center; gap: .65rem; margin: 0 0 2.5rem; }
+.demoNotice { color: #82ff1f; font-family: ui-monospace, monospace; font-size: .68rem; letter-spacing: .08em; line-height: 1.4; margin: 0 0 1rem; }
+.eyebrow i { height: 6px; width: 6px; border-radius: 50%; background: #82ff1f; }
+.hero h1 { font-size: clamp(4rem, 7.7vw, 9rem); line-height: .91; letter-spacing: -.075em; font-weight: 500; margin: 1rem 0 2rem; }
+.lab em { color: #82ff1f; font-style: normal; }
+.description { color: #b4b5ad; max-width: 29rem; line-height: 1.7; font-size: clamp(.95rem, 1.2vw, 1.15rem); }
+.button { display: inline-flex; align-items: center; justify-content: space-between; gap: 2.5rem; background: #82ff1f; color: #0a0a0a; font-size: .85rem; padding: 1rem 1.4rem; margin-top: 1.4rem; min-height: 52px; }
+.button span { font-size: 1.3rem; }
+.button:hover { background: #b1ff72; }
+.heroFoot { display: flex; justify-content: space-between; gap: 1rem; border-top: 1px solid var(--lab-line); width: 100%; padding-top: 1.2rem; margin-top: auto; padding-block-start: 1.2rem; color: #92988a; }
+.section { padding: 6rem 4vw; border-top: 1px solid var(--lab-line); scroll-margin-top: 2rem; }
+.section h2 { font-size: clamp(2.7rem, 4.7vw, 5.5rem); line-height: .98; font-weight: 400; letter-spacing: -.065em; margin: 0 0 3rem; }
+.card { display: grid; grid-template-columns: 2.3rem 1fr; gap: 1rem; padding: 2rem 0; border-top: 1px solid var(--lab-line); }
+.card > span { font-size: .7rem; color: #82ff1f; padding-top: .4rem; }
+.card h3 { font-size: 1.35rem; font-weight: 400; letter-spacing: -.025em; margin: 0 0 .8rem; }
+.card p { font-size: .95rem; color: #a7ada1; margin: 0; line-height: 1.7; }
+.variants { display: grid; gap: .65rem; margin: 2rem 0; }
+.variants button { display: flex; align-items: center; gap: 1rem; background: #121412; border: 1px solid #ffffff30; color: #f3f0e8; padding: 1rem; text-align: left; cursor: pointer; min-height: 62px; }
+.variants button[aria-pressed="true"] { border-color: #82ff1f; background: #182011; }
+.variants button > span:last-child { margin-left: auto; color: #82ff1f; }
+.swatch { width: 24px; height: 24px; border-radius: 50%; border: 1px solid #ffffff60; }
+.selection { font-size: .8rem; color: #b9beb2; min-height: 3rem; }
+.selection strong { color: #f3f0e8; }
+.note { font-size: .72rem; color: #93998c; line-height: 1.6; margin-top: 4rem; max-width: 26rem; }
+.outro { padding: 7rem 4vw; background: linear-gradient(#131811, #0a0a0a); border-top: 1px solid var(--lab-line); }
+.outro h2 { font-size: clamp(3.4rem, 9vw, 10rem); line-height: .95; letter-spacing: -.075em; font-weight: 400; margin: 3rem 0; }
+.outro > div { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+.outro p:not(.eyebrow) { max-width: 27rem; color: #b9beb2; }
+.footer { display: flex; justify-content: space-between; gap: 1.5rem; border-top: 1px solid var(--lab-line); padding: 2rem 4vw; color: #a7ada1; }
+.lab :focus-visible { outline: 2px solid #82ff1f; outline-offset: 5px; }
+@media (max-width: 1000px) { .header > span { display: none; } .heroFoot { flex-direction: column; margin-top: 3rem; } .stageLabel { font-size: .55rem; } }
+@media (max-width: 760px) {
+  .header { padding: 1.2rem; } .story { display: flex; flex-direction: column; }
+  .visual { order: -1; position: sticky; top: 0; height: 30svh; min-height: 190px; width: 100%; padding: .5rem 1rem; border: 1px solid var(--lab-line); z-index: 3; }
+  .stageIndex { font-size: 2.5rem; top: 0; } .stageLabel { bottom: .3rem; } .pause { font-size: .58rem; padding: .4rem; min-height: 36px; }
+  .hero { padding: 3rem 1.25rem; min-height: auto; } .hero h1 { font-size: clamp(3.8rem, 17vw, 7rem); }
+  .section { padding: 4rem 1.25rem; scroll-margin-top: max(32svh, 205px); } .eyebrow { font-size: .58rem; } .section h2 { font-size: 3rem; }
+  .outro { padding: 4rem 1.25rem; } .outro > div { flex-direction: column; align-items: start; }
+  .footer { flex-wrap: wrap; padding: 2rem 1.25rem; font-size: .58rem; } .footer > span:nth-child(2) { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .lab *, .lab *::before, .lab *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; } }

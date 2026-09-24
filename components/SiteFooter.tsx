@@ -22,6 +22,7 @@ export function SiteFooter() {
         <nav className="footer-links" aria-label="Nawigacja w stopce">
           <Link href="/">Home</Link>
           {navigation.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}
+          <Link href="/interaktywne-3d">Interaktywne 3D</Link>
         </nav>
         <div className="footer-contact">
           <a href={`mailto:${contact.email}`}>{contact.email}</a>

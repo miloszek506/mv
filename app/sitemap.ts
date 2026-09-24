@@ -15,6 +15,7 @@ const publicRoutes = [
   { path: "/contact/", changeFrequency: "monthly", priority: 0.8 },
   { path: "/polityka-cookies/", changeFrequency: "yearly", priority: 0.3 },
   { path: "/polityka-prywatnosci/", changeFrequency: "yearly", priority: 0.3 },
+  { path: "/interaktywne-3d/", changeFrequency: "monthly", priority: 0.6 },
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

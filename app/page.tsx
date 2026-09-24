@@ -168,7 +168,15 @@ export default function Home() {
             <article className="service-row" key={service.number}>
               <span>{service.number}</span>
               <h3>{service.title}</h3>
-              <p>{service.summary}</p>
+              <p>
+                {service.summary}
+                {service.slug === "proste-3d" ? (
+                  <>
+                    <span className="service-demo-note">Proste interaktywne prezentacje produktu lub marki możemy przygotować z użyciem WebGL, Three.js i React Three Fiber. Zaawansowane konfiguratory 3D analizujemy i wyceniamy indywidualnie.</span>
+                    <Link className="service-demo-link text-link" href="/interaktywne-3d">Zobacz demonstrację 3D <ArrowIcon /></Link>
+                  </>
+                ) : null}
+              </p>
               <span className="service-arrow" aria-hidden="true"><ArrowIcon /></span>
             </article>
           ))}

@@ -36,6 +36,17 @@ export function ProjectsSection({ interactive = false, scrollDrivenDemo = false 
         ))}
       </div>
 
+      <div className="lab-demo-panel" data-reveal>
+        <div>
+          <span className="eyebrow">DEMO TECHNOLOGICZNE</span>
+          <h3>Interaktywne doświadczenia 3D</h3>
+          <p>Przykładowa prezentacja pokazująca, jak możemy połączyć produkt, ruch, przestrzeń i interakcję w jednej stronie internetowej.</p>
+        </div>
+        <Link className="text-link lab-demo-panel-link" href="/interaktywne-3d">
+          Zobacz demo 3D <ArrowIcon />
+        </Link>
+      </div>
+
       <div className={`demo-projects-stage${scrollDrivenDemo ? " demo-projects-stage--scroll-driven" : ""}`} data-demo-stage={scrollDrivenDemo || undefined}>
         <div className="demo-projects-heading" data-reveal>
           <span className="eyebrow">Projekty demonstracyjne</span>
