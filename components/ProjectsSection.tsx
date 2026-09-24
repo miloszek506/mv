@@ -31,8 +31,8 @@ export function ProjectsSection({ interactive = false, scrollDrivenDemo = false 
       </div>
 
       <div className="real-projects-grid" data-real-projects>
-        {realProjects.map((project) => (
-          <ProjectCard key={project.id} project={project} interactive />
+        {realProjects.map((project, index) => (
+          <ProjectCard key={project.id} project={project} interactive portfolioIndex={index + 1} />
         ))}
       </div>
 
@@ -49,13 +49,19 @@ export function ProjectsSection({ interactive = false, scrollDrivenDemo = false 
 
       <div className={`demo-projects-stage${scrollDrivenDemo ? " demo-projects-stage--scroll-driven" : ""}`} data-demo-stage={scrollDrivenDemo || undefined}>
         <div className="demo-projects-heading" data-reveal>
-          <span className="eyebrow">Projekty demonstracyjne</span>
-          <p>Autorskie kierunki pokazujące możliwości projektowe MV Studio.</p>
+          <div>
+            <span className="eyebrow">Projekty demonstracyjne</span>
+            <p>Autorskie kierunki pokazujące możliwości projektowe MV Studio.</p>
+          </div>
+          <div className="portfolio-progress" aria-label="Postęp projektów portfolio">
+            <span className="portfolio-counter" data-portfolio-counter aria-live="polite">03 / 06</span>
+            <span className="portfolio-progress-track" aria-hidden="true"><span data-portfolio-progress /></span>
+          </div>
         </div>
-        <div className="demo-projects-viewport" data-demo-rail aria-label="Projekty demonstracyjne">
+        <div className="demo-projects-viewport" data-demo-rail aria-label="Projekty demonstracyjne" tabIndex={0} aria-keyshortcuts="ArrowLeft ArrowRight">
           <div className="demo-projects-rail">
-            {demoProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} interactive={interactive} />
+            {demoProjects.map((project, index) => (
+              <ProjectCard key={project.id} project={project} interactive={interactive} portfolioIndex={index + 3} />
             ))}
           </div>
         </div>

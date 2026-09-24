@@ -8,6 +8,7 @@ import { AnimationController } from "@/components/AnimationController";
 import { FaqList } from "@/components/FaqList";
 import { SiteFooter } from "@/components/SiteFooter";
 import { serviceOffers } from "@/data/services";
+import { InteractiveServices } from "@/components/InteractiveServices";
 
 export const metadata: Metadata = {
   title: "Strony WordPress, WooCommerce i Next.js | Bielsko-Biała",
@@ -67,13 +68,6 @@ const reasons = [
   "Szybkość i podstawy widoczności w Google",
   "Wsparcie także po publikacji",
 ] as const;
-
-function getServiceHref(slug: string) {
-  if (slug === "wordpress") return "/services/#wordpress";
-  if (slug === "woocommerce") return "/services/#woocommerce";
-  if (slug === "nextjs-typescript" || slug === "animacje-interakcje") return "/services/#nextjs-typescript";
-  return "/interaktywne-3d/";
-}
 
 export default function Home() {
   return (
@@ -170,24 +164,7 @@ export default function Home() {
             <br />która pracuje dla firmy.
           </h2>
         </div>
-        <div className="services-list">
-          {serviceOffers.map((service) => (
-            <Link className="service-row" key={service.number} href={getServiceHref(service.slug)} aria-label={`${service.title}: ${service.slug === "proste-3d" ? "zobacz demonstrację" : "zobacz ofertę"}`}>
-              <span>{service.number}</span>
-              <h3>{service.title}</h3>
-              <p>
-                {service.summary}
-                {service.slug === "proste-3d" ? (
-                  <>
-                    <span className="service-demo-note">Proste interaktywne prezentacje produktu lub marki możemy przygotować z użyciem WebGL, Three.js i React Three Fiber. Zaawansowane konfiguratory 3D analizujemy i wyceniamy indywidualnie.</span>
-                    <span className="service-demo-link text-link">Zobacz demonstrację 3D <ArrowIcon /></span>
-                  </>
-                ) : null}
-              </p>
-              <span className="service-arrow" aria-hidden="true"><ArrowIcon /></span>
-            </Link>
-          ))}
-        </div>
+        <InteractiveServices services={serviceOffers} />
         <Link className="section-cta text-link" href="/services">Poznaj ofertę i technologie <ArrowIcon /></Link>
       </section>
 
@@ -201,15 +178,18 @@ export default function Home() {
             <br />do gotowej strony.
           </h2>
         </div>
-        <ol className="process-list">
-          {processSteps.map((step) => (
-            <li key={step.number}>
-              <span>{step.number}</span>
+        <div className="process-timeline" data-process-timeline>
+          <span className="process-progress" aria-hidden="true" />
+          <ol className="process-list">
+          {processSteps.map((step, index) => (
+            <li className={index === 0 ? "is-active" : undefined} key={step.number}>
+              <span className="process-number">{step.number}</span>
               <h3>{step.title}</h3>
               <p>{step.description}</p>
             </li>
           ))}
-        </ol>
+          </ol>
+        </div>
         <Link className="section-cta text-link" href="/contact">Opowiedz nam o swojej stronie <ArrowIcon /></Link>
       </section>
 

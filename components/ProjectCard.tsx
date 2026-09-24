@@ -10,9 +10,10 @@ import type { Project } from "@/data/projects";
 type ProjectCardProps = {
   project: Project;
   interactive?: boolean;
+  portfolioIndex?: number;
 };
 
-export function ProjectCard({ project, interactive = true }: ProjectCardProps) {
+export function ProjectCard({ project, interactive = true, portfolioIndex }: ProjectCardProps) {
   const cardRef = useRef<HTMLElement>(null);
   const surfaceRef = useRef<HTMLDivElement>(null);
   const reflectionRef = useRef<HTMLSpanElement>(null);
@@ -118,7 +119,11 @@ export function ProjectCard({ project, interactive = true }: ProjectCardProps) {
   );
 
   return (
-    <article className={`project-card project-card--${project.kind}`} ref={cardRef}>
+    <article
+      className={`project-card project-card--${project.kind}`}
+      data-portfolio-index={portfolioIndex}
+      ref={cardRef}
+    >
       <div className="project-card-surface" ref={surfaceRef}>
         {projectHref ? (
           <Link

@@ -13,6 +13,7 @@ export function AnimationController() {
     }
 
     const isMobile = window.matchMedia("(max-width: 760px)").matches;
+    const cleanupListeners: Array<() => void> = [];
     const context = gsap.context(() => {
       const header = document.querySelector<HTMLElement>(".site-header");
       const hero = document.querySelector<HTMLElement>(".hero");
@@ -35,6 +36,7 @@ export function AnimationController() {
               {
                 yPercent: isMobile ? 108 : 116,
                 rotate: isMobile ? 3 : 5,
+                clipPath: "inset(0 0 100% 0)",
                 duration: isMobile ? 0.75 : 1.05,
                 stagger: 0.12,
                 immediateRender: false,
@@ -149,6 +151,12 @@ export function AnimationController() {
       const demoViewport = document.querySelector<HTMLElement>("[data-demo-rail]");
       const demoRail = demoViewport?.querySelector<HTMLElement>(".demo-projects-rail");
       const demoProjectCards = gsap.utils.toArray<HTMLElement>("[data-demo-rail] .project-card");
+      const portfolioCounter = demoStage?.querySelector<HTMLElement>("[data-portfolio-counter]");
+      const portfolioProgress = demoStage?.querySelector<HTMLElement>("[data-portfolio-progress]");
+      const updatePortfolioProgress = (position: number) => {
+        if (portfolioCounter) portfolioCounter.textContent = `${String(position).padStart(2, "0")} / 06`;
+        if (portfolioProgress) portfolioProgress.style.width = `${(position / 6) * 100}%`;
+      };
       if (!demoStage && demoViewport && demoProjectCards.length > 0) {
         gsap.from(demoProjectCards, {
           opacity: 0,
@@ -162,6 +170,7 @@ export function AnimationController() {
       }
 
       if (!isMobile && demoStage && demoViewport && demoRail && demoProjectCards.length > 0) {
+        updatePortfolioProgress(3);
         const getTravelDistance = () => Math.max(0, demoRail.scrollWidth - demoViewport.clientWidth);
         const horizontalTrack = gsap.to(demoRail, {
           x: () => -getTravelDistance(),
@@ -177,10 +186,22 @@ export function AnimationController() {
           },
         });
 
-        demoProjectCards.forEach((card) => {
+        const handleDemoKeyDown = (event: KeyboardEvent) => {
+          if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+          event.preventDefault();
+          window.scrollBy({
+            top: event.key === "ArrowRight" ? window.innerHeight * 0.32 : -window.innerHeight * 0.32,
+            behavior: "smooth",
+          });
+        };
+        demoViewport.addEventListener("keydown", handleDemoKeyDown);
+        cleanupListeners.push(() => demoViewport.removeEventListener("keydown", handleDemoKeyDown));
+
+        demoProjectCards.forEach((card, index) => {
           const surface = card.querySelector<HTMLElement>(".project-card-surface");
           const image = card.querySelector<HTMLElement>(".project-image");
           if (!surface) return;
+          const position = Number(card.dataset.portfolioIndex) || index + 3;
 
           gsap.fromTo(
             surface,
@@ -196,6 +217,16 @@ export function AnimationController() {
                 start: "left 94%",
                 end: "right 8%",
                 scrub: true,
+                onEnter: () => {
+                  updatePortfolioProgress(position);
+                  card.classList.add("is-portfolio-active");
+                },
+                onEnterBack: () => {
+                  updatePortfolioProgress(position);
+                  card.classList.add("is-portfolio-active");
+                },
+                onLeave: () => card.classList.remove("is-portfolio-active"),
+                onLeaveBack: () => card.classList.remove("is-portfolio-active"),
               },
             },
           );
@@ -218,6 +249,60 @@ export function AnimationController() {
               },
             );
           }
+        });
+      }
+
+      if (isMobile && demoStage && demoProjectCards.length > 0) {
+        updatePortfolioProgress(3);
+        demoProjectCards.forEach((card, index) => {
+          const position = Number(card.dataset.portfolioIndex) || index + 3;
+          ScrollTrigger.create({
+            trigger: card,
+            start: "top 72%",
+            end: "bottom 38%",
+            onEnter: () => {
+              updatePortfolioProgress(position);
+              card.classList.add("is-portfolio-active");
+            },
+            onEnterBack: () => {
+              updatePortfolioProgress(position);
+              card.classList.add("is-portfolio-active");
+            },
+            onLeave: () => card.classList.remove("is-portfolio-active"),
+            onLeaveBack: () => card.classList.remove("is-portfolio-active"),
+          });
+        });
+      }
+
+      const processTimeline = document.querySelector<HTMLElement>("[data-process-timeline]");
+      const processProgress = processTimeline?.querySelector<HTMLElement>(".process-progress");
+      const processSteps = gsap.utils.toArray<HTMLElement>("[data-process-timeline] .process-list li");
+      if (processTimeline && processProgress && processSteps.length > 0) {
+        gsap.fromTo(
+          processProgress,
+          { scaleY: 0 },
+          {
+            scaleY: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: processTimeline,
+              start: "top 68%",
+              end: "bottom 68%",
+              scrub: 0.7,
+              invalidateOnRefresh: true,
+            },
+          },
+        );
+        processSteps.forEach((step) => {
+          ScrollTrigger.create({
+            trigger: step,
+            start: "top 68%",
+            end: "bottom 48%",
+            onEnter: () => step.classList.add("is-active"),
+            onEnterBack: () => step.classList.add("is-active"),
+            onLeave: () => step.classList.remove("is-active"),
+            onLeaveBack: () => step.classList.remove("is-active"),
+          });
         });
       }
 
@@ -320,7 +405,10 @@ export function AnimationController() {
 
     ScrollTrigger.refresh();
 
-    return () => context.revert();
+    return () => {
+      cleanupListeners.forEach((cleanup) => cleanup());
+      context.revert();
+    };
   }, []);
 
   return null;
