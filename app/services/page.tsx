@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Cennik stron WordPress, WooCommerce i Next.js | MV Studio",
     description: "Pakiety stron, sklepów i realizacji premium z jasnym zakresem oraz cenami od.",
     url: "/services",
-    images: [{ url: "/images/mv-studio-og.png", width: 3024, height: 1718, alt: "MV Studio — nowoczesne strony internetowe" }],
+    images: [{ url: "/images/mv-studio-og.png", width: 3024, height: 1718, alt: "MV Studio: nowoczesne strony internetowe" }],
   },
 };
 
@@ -31,7 +31,7 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="Cennik · Strony, sklepy i doświadczenia"
         title={["Cennik", "stron"]}
-        description="Od prostych stron WordPress, przez podstawowe sklepy WooCommerce, po indywidualne realizacje premium w Next.js. Podane ceny są cenami od — końcowy zakres ustalamy dla konkretnego projektu."
+        description="Od prostych stron WordPress, przez podstawowe sklepy WooCommerce, po indywidualne realizacje premium w Next.js. Podane ceny są cenami od. Końcowy zakres ustalamy dla konkretnego projektu."
         index="04"
         variant="services"
         action={{ href: "/contact", label: "Zapytaj o wycenę" }}

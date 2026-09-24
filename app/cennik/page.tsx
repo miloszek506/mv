@@ -10,6 +10,6 @@ export const metadata: Metadata = {
     title: "Cennik stron WordPress, WooCommerce i Next.js | MV Studio",
     description: "Pakiety stron, sklepów i realizacji premium z jasnym zakresem oraz cenami od.",
     url: "/cennik",
-    images: [{ url: "/images/mv-studio-og.png", width: 3024, height: 1718, alt: "MV Studio — nowoczesne strony internetowe" }],
+    images: [{ url: "/images/mv-studio-og.png", width: 3024, height: 1718, alt: "MV Studio: nowoczesne strony internetowe" }],
   },
 };

@@ -148,7 +148,7 @@ export function ProjectCard({ project, interactive = true }: ProjectCardProps) {
             <p>{project.category}</p>
             <h3>{project.name}</h3>
           </div>
-          <span>{project.year ?? "—"}</span>
+          <span>{project.year ?? "brak daty"}</span>
         </div>
         <p className="project-description">{project.description}</p>
       </div>

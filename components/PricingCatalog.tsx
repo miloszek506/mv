@@ -35,7 +35,7 @@ export function PricingCatalog() {
           <p>Podane ceny są cenami „od”. Ostateczna wycena zależy od zakresu, materiałów i funkcji uzgodnionych dla konkretnej strony.</p>
         </div>
 
-        <section className="pricing-group" aria-labelledby="wordpress-pricing-title">
+        <section className="pricing-group" id="wordpress" aria-labelledby="wordpress-pricing-title">
           <div className="pricing-group-heading" data-reveal>
             <span className="eyebrow">01 · WordPress</span>
             <h2 id="wordpress-pricing-title">Łatwe zarządzanie<br />treścią.</h2>
@@ -44,7 +44,7 @@ export function PricingCatalog() {
           <div className="catalog-grid">{wordpressPricing.map((item) => <PackageCard item={item} key={item.name} />)}</div>
         </section>
 
-        <section className="pricing-group pricing-group--woo" aria-labelledby="woocommerce-pricing-title">
+        <section className="pricing-group pricing-group--woo" id="woocommerce" aria-labelledby="woocommerce-pricing-title">
           <div className="pricing-group-heading" data-reveal>
             <span className="eyebrow">02 · WooCommerce</span>
             <h2 id="woocommerce-pricing-title">Prosty sklep<br />na dobry start.</h2>
@@ -53,14 +53,14 @@ export function PricingCatalog() {
           <div className="catalog-grid catalog-grid--single"><PackageCard item={woocommercePricing} /></div>
         </section>
 
-        <section className="pricing-group pricing-group--next" aria-labelledby="next-pricing-title">
+        <section className="pricing-group pricing-group--next" id="nextjs-typescript" aria-labelledby="next-pricing-title">
           <div className="pricing-group-heading" data-reveal>
             <span className="eyebrow">03 · Next.js</span>
             <h2 id="next-pricing-title">Indywidualna warstwa<br />premium.</h2>
             <p>Dedykowany projekt w React, Next.js i TypeScript dla marek, które potrzebują szybkości i niestandardowego doświadczenia.</p>
           </div>
           <div className="catalog-grid">{nextPricing.map((item) => <PackageCard item={item} key={item.name} />)}</div>
-          <p className="pricing-note" data-reveal>Proste animacje GSAP są częścią wybranych pakietów. Dodatkowe interakcje, WebGL i Three.js analizujemy oraz wyceniamy indywidualnie — nie są elementem każdego projektu.</p>
+          <p className="pricing-note" data-reveal>Proste animacje GSAP są częścią wybranych pakietów. Dodatkowe interakcje, WebGL i Three.js analizujemy oraz wyceniamy indywidualnie. Nie są elementem każdego projektu.</p>
         </section>
 
         <section className="pricing-section maintenance-pricing pricing-group--maintenance" aria-labelledby="maintenance-title">
@@ -70,7 +70,7 @@ export function PricingCatalog() {
           </div>
           <p className="pricing-intro" data-reveal>
             Pakiety utrzymania i opieki nad stroną obejmują hosting, bezpieczeństwo,
-            kopie zapasowe, aktualizacje i wsparcie — zależnie od wybranego zakresu.
+            kopie zapasowe, aktualizacje i wsparcie, zależnie od wybranego zakresu.
           </p>
           <div className="pricing-grid maintenance-grid">
             {maintenancePackages.map((item, index) => (

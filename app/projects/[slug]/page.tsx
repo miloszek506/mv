@@ -27,10 +27,10 @@ export async function generateMetadata({ params }: CaseStudyPageProps): Promise<
     description: study.heroDescription,
     alternates: { canonical: `/projects/${study.slug}` },
     openGraph: {
-      title: `${study.name} — case study | MV Studio`,
+      title: `${study.name} | case study | MV Studio`,
       description: study.heroDescription,
       url: `/projects/${study.slug}`,
-      images: [{ url: "/images/mv-studio-og.png", width: 3024, height: 1718, alt: "MV Studio — nowoczesne strony internetowe" }],
+      images: [{ url: "/images/mv-studio-og.png", width: 3024, height: 1718, alt: "MV Studio: nowoczesne strony internetowe" }],
     },
   };
 }

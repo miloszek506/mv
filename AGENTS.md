@@ -1,4 +1,4 @@
-# AGENTS.md — MV Studio
+# AGENTS.md - MV Studio
 
 ## Kontekst projektu
 

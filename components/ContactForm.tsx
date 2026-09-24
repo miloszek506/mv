@@ -13,12 +13,12 @@ export function ContactForm() {
     const email = String(formData.get("email") ?? "").trim();
     const budget = String(formData.get("budget") ?? "").trim();
     const message = String(formData.get("message") ?? "").trim();
-    const subject = encodeURIComponent(`Zapytanie ze strony MV Studio — ${name}`);
+    const subject = encodeURIComponent(`Zapytanie ze strony MV Studio: ${name}`);
     const body = encodeURIComponent(
       `Imię: ${name}\nE-mail: ${email}\nBudżet: ${budget}\n\nOpis projektu:\n${message}`,
     );
 
-    setStatus("Otwieram aplikację pocztową — formularz nie zapisuje danych.");
+    setStatus("Otwieram aplikację pocztową. Formularz nie zapisuje danych.");
     window.location.href = `mailto:kontakt@mvstudio.pl?subject=${subject}&body=${body}`;
   }
 

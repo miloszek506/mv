@@ -24,7 +24,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="O nas · MV Studio"
         title={["Jak", "zaczęliśmy"]}
-        description="Zaczęliśmy od prostych stron i projektów dla znajomych. Tak powstało MV Studio — miejsce, w którym łączymy kreatywność z biznesem."
+        description="Zaczęliśmy od prostych stron i projektów dla znajomych. Tak powstało MV Studio, miejsce, w którym łączymy kreatywność z biznesem."
         index="02"
         variant="about"
         action={{ href: "/contact", label: "Porozmawiajmy" }}
@@ -47,7 +47,7 @@ export default function AboutPage() {
               <Image src="/images/milosz.png" alt="Portret Miłosza, współzałożyciela MV Studio" fill sizes="(max-width: 760px) 100vw, 46vw" />
             </div>
             <span>Technologia · WordPress</span><h3>Miłosz</h3>
-            <p>Odpowiada za techniczną stronę projektów i wdrożenia w WordPressie — szybkość, funkcje, jakość techniczną i nowe technologie.</p>
+            <p>Odpowiada za techniczną stronę projektów i wdrożenia w WordPressie: szybkość, funkcje, jakość techniczną i nowe technologie.</p>
           </article>
         </div>
       </section>

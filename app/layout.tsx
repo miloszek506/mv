@@ -7,8 +7,8 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://mvstudio.pl"),
   title: {
-    default: "MV Studio — Strony internetowe dla firm",
-    template: "%s — MV Studio",
+    default: "MV Studio | Strony internetowe dla firm",
+    template: "%s | MV Studio",
   },
   description:
     "MV Studio projektuje strony WordPress, sklepy WooCommerce i indywidualne strony premium w Next.js oraz TypeScript.",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "MV Studio — Strony internetowe dla firm",
+    title: "MV Studio | Strony internetowe dla firm",
     description:
       "Strony WordPress, sklepy WooCommerce i dopracowane doświadczenia cyfrowe tworzone z myślą o celu firmy.",
     url: "https://mvstudio.pl",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
       url: "/images/mv-studio-og.png",
       width: 3024,
       height: 1718,
-      alt: "MV Studio — nowoczesne strony internetowe",
+      alt: "MV Studio: nowoczesne strony internetowe",
     }],
   },
   twitter: {

@@ -36,7 +36,7 @@ export const avandisCaseStudy: CaseStudy = {
     heroDescription:
     "Nowoczesna strona internetowa dla marki działającej na rynku nieruchomości i inwestycji. Projekt łączy profesjonalny, biznesowy charakter z przejrzystą prezentacją portfolio nieruchomości.",
     clientDescription:
-    "Avandis to firma działająca na rynku nieruchomości, koncentrująca się na zakupie, zarządzaniu i sprzedaży nieruchomości na własny rachunek.\n\nNaszym zadaniem było stworzenie nowej obecności marki w internecie — profesjonalnej, nowoczesnej i dopasowanej do charakteru działalności inwestycyjnej. Strona miała nie tylko przedstawiać firmę, ale przede wszystkim odpowiednio eksponować jej portfolio i poszczególne nieruchomości.",
+    "Avandis to firma działająca na rynku nieruchomości, koncentrująca się na zakupie, zarządzaniu i sprzedaży nieruchomości na własny rachunek.\n\nNaszym zadaniem było stworzenie nowej obecności marki w internecie, profesjonalnej, nowoczesnej i dopasowanej do charakteru działalności inwestycyjnej. Strona miała nie tylko przedstawiać firmę, ale przede wszystkim odpowiednio eksponować jej portfolio i poszczególne nieruchomości.",
     challenge:
     "Avandis potrzebował strony, która będzie budowała wiarygodny wizerunek marki oraz pozwoli w uporządkowany sposób prezentować realizowane inwestycje, nieruchomości i najważniejsze informacje o firmie.\n\nIstotne było połączenie biznesowego charakteru z nowoczesną, wizualną formą.",
     goal:
@@ -56,10 +56,10 @@ export const avandisCaseStudy: CaseStudy = {
     "Testy i finalne wdrożenie",
   ],
   structure: [
-    "Mocne otwarcie marki — pierwszy ekran buduje profesjonalny charakter Avandis i od razu określa obszar działalności firmy.",
-    "Portfolio jako kluczowy element serwisu — nieruchomości otrzymały wyraźną przestrzeń wizualną, dzięki której użytkownik może szybko przejść do interesującego go projektu.",
-    "Dedykowane prezentacje inwestycji — wybrane nieruchomości posiadają rozbudowane podstrony łączące zdjęcia, materiały wideo i najważniejsze informacje.",
-    "Prosta ścieżka kontaktu — kontakt z firmą pozostaje łatwo dostępny niezależnie od miejsca, w którym użytkownik znajduje się w serwisie.",
+    "Mocne otwarcie marki. Pierwszy ekran buduje profesjonalny charakter Avandis i od razu określa obszar działalności firmy.",
+    "Portfolio jako kluczowy element serwisu. Nieruchomości otrzymały wyraźną przestrzeń wizualną, dzięki której użytkownik może szybko przejść do interesującego go projektu.",
+    "Dedykowane prezentacje inwestycji. Wybrane nieruchomości posiadają rozbudowane podstrony łączące zdjęcia, materiały wideo i najważniejsze informacje.",
+    "Prosta ścieżka kontaktu. Kontakt z firmą pozostaje łatwo dostępny niezależnie od miejsca, w którym użytkownik znajduje się w serwisie.",
   ],
   decisions: [
     "Projekt został przygotowany dla komputerów, tabletów i smartfonów. Układ sekcji, typografia, materiały wizualne i odstępy zmieniają się wraz z szerokością ekranu, zachowując charakter projektu również na urządzeniach mobilnych.",
@@ -89,7 +89,7 @@ export const benvenutiCaseStudy: CaseStudy = {
   technology: "WordPress · Elementor",
   liveUrl: "https://benvenutianapoli.pl",
     heroDescription:
-      "Strona internetowa dla autentycznej pizzerii neapolitańskiej w sercu Bielska-Białej — zaprojektowana tak, aby charakter lokalu, jego historia i kuchnia były wyczuwalne od pierwszego ekranu.",
+    "Strona internetowa dla autentycznej pizzerii neapolitańskiej w sercu Bielska-Białej, zaprojektowana tak, aby charakter lokalu, jego historia i kuchnia były wyczuwalne od pierwszego ekranu.",
     clientDescription:
       "Benvenuti a Napoli to pizzeria neapolitańska działająca w centrum Bielska-Białej. Marka opiera się na autentycznej włoskiej kuchni, neapolitańskich recepturach, starannie dobranych składnikach oraz atmosferze południa Włoch.\n\nNaszym zadaniem było przenieść ten charakter do świata cyfrowego i stworzyć stronę, która nie będzie jedynie wizytówką lokalu, ale pełnoprawnym rozszerzeniem marki Benvenuti a Napoli.",
     challenge:
@@ -135,7 +135,7 @@ export const benvenutiCaseStudy: CaseStudy = {
     liveHeading: "Poczuj kawałek Neapolu online.",
     liveDescription: "Zobacz kompletną realizację Benvenuti a Napoli i sprawdź, jak połączyliśmy włoski charakter marki z nowoczesnym doświadczeniem internetowym.",
   image: "/projects/benvenuti-a-napoli.jpg",
-  imageAlt: "Benvenuti a Napoli — pizzeria w Bielsku-Białej",
+  imageAlt: "Benvenuti a Napoli: pizzeria w Bielsku-Białej",
 };
 
 export const caseStudies: CaseStudy[] = [avandisCaseStudy, benvenutiCaseStudy];

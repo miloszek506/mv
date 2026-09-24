@@ -1,7 +1,8 @@
 .lab { --lab-line: #ffffff21; background: #0a0a0a; color: #f3f0e8; overflow: clip; }
 .header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.8rem 4vw; border-bottom: 1px solid var(--lab-line); }
-.header > a:first-child { font-size: 1.6rem; font-weight: 800; letter-spacing: -.08em; }
-.header b { color: #82ff1f; margin-left: .6rem; font-weight: 400; }
+.header > a:first-child { align-items: center; display: inline-flex; font-size: 1.6rem; font-weight: 800; gap: .6rem; letter-spacing: -.08em; }
+.logo { height: auto; width: clamp(4.8rem, 8vw, 7.3rem); }
+.labMark { color: #82ff1f; font-weight: 400; }
 .header > span, .header > a:last-child, .eyebrow, .heroFoot, .stageLabel, .footer, .pause { font-family: ui-monospace, monospace; font-size: .68rem; letter-spacing: .08em; }
 .header > a:last-child { border-bottom: 1px solid #82ff1f; padding: .6rem 0; }
 .story { position: relative; display: grid; grid-template-columns: 1fr 1fr; }

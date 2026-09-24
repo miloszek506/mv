@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import Link from "next/link";
 import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
@@ -68,11 +69,11 @@ export default function Showroom() {
   }, []);
 
   return <main className={styles.lab} ref={root}>
-    <header className={styles.header}><Link href="/" aria-label="MV Studio — strona główna">MV<span>®</span> <b>LAB</b></Link><span>EXPERIMENT 001 / INTERACTIVE OBJECTS</span><a href="#variant">Konfigurator <span aria-hidden="true">↗</span></a></header>
+    <header className={styles.header}><Link href="/" aria-label="MV Studio: strona główna"><Image className={styles.logo} src="/images/mv-studio-logo.svg" alt="Logo MV Studio" width={147} height={85} priority /><span className={styles.labMark}>LAB</span></Link><span>EXPERIMENT 001 / INTERACTIVE OBJECTS</span><a href="#variant">Konfigurator <span aria-hidden="true">↗</span></a></header>
     <div className={styles.story} data-lab-story>
       <div className={styles.visual}>
-        <div className={styles.stage} role="img" aria-label={`Lampa ORBIT / 01 — wariant ${variants[variant].name}. Pierścień światła na smukłej podstawie.`}>
-          <span className={styles.stageIndex}>O—01</span>
+        <div className={styles.stage} role="img" aria-label={`Lampa ORBIT / 01: wariant ${variants[variant].name}. Pierścień światła na smukłej podstawie.`}>
+          <span className={styles.stageIndex}>O-01</span>
           <LampFallback color={variants[variant].color} />
           <Scene variant={variant} motion={motion} paused={paused} />
           <div className={styles.stageLabel}><span>ORBIT / 01</span><span>LIGHT AS AN OBJECT</span></div>

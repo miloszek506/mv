@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     title: "Strony WordPress, WooCommerce i Next.js | MV Studio",
     description: "Nowoczesne strony, sklepy i interaktywne doświadczenia cyfrowe dopasowane do celu biznesowego.",
     url: "/",
-    images: [{ url: "/images/mv-studio-og.png", width: 3024, height: 1718, alt: "MV Studio — nowoczesne strony internetowe" }],
+    images: [{ url: "/images/mv-studio-og.png", width: 3024, height: 1718, alt: "MV Studio: nowoczesne strony internetowe" }],
   },
 };
 
@@ -68,6 +68,13 @@ const reasons = [
   "Wsparcie także po publikacji",
 ] as const;
 
+function getServiceHref(slug: string) {
+  if (slug === "wordpress") return "/services/#wordpress";
+  if (slug === "woocommerce") return "/services/#woocommerce";
+  if (slug === "nextjs-typescript" || slug === "animacje-interakcje") return "/services/#nextjs-typescript";
+  return "/interaktywne-3d/";
+}
+
 export default function Home() {
   return (
     <main className="home-page">
@@ -91,7 +98,7 @@ export default function Home() {
           <p>
             Projektujemy strony WordPress, sklepy WooCommerce i indywidualne
             doświadczenia w Next.js. Technologię dobieramy do sposobu pracy,
-            treści i celu firmy — nie odwrotnie.
+            treści i celu firmy, a nie odwrotnie.
           </p>
           <div className="hero-actions">
             <Link className="circle-link" href="/contact">
@@ -119,7 +126,7 @@ export default function Home() {
         </div>
         <div className="about-grid" data-reveal>
           <p className="about-lead">
-            MV Studio tworzymy we dwóch — Miłosz i Vova. Łączymy kreatywność z
+            MV Studio tworzymy we dwóch: Miłosz i Vova. Łączymy kreatywność z
             praktycznym podejściem do biznesu.
           </p>
           <div className="about-copy">
@@ -165,7 +172,7 @@ export default function Home() {
         </div>
         <div className="services-list">
           {serviceOffers.map((service) => (
-            <article className="service-row" key={service.number}>
+            <Link className="service-row" key={service.number} href={getServiceHref(service.slug)} aria-label={`${service.title}: ${service.slug === "proste-3d" ? "zobacz demonstrację" : "zobacz ofertę"}`}>
               <span>{service.number}</span>
               <h3>{service.title}</h3>
               <p>
@@ -173,12 +180,12 @@ export default function Home() {
                 {service.slug === "proste-3d" ? (
                   <>
                     <span className="service-demo-note">Proste interaktywne prezentacje produktu lub marki możemy przygotować z użyciem WebGL, Three.js i React Three Fiber. Zaawansowane konfiguratory 3D analizujemy i wyceniamy indywidualnie.</span>
-                    <Link className="service-demo-link text-link" href="/interaktywne-3d">Zobacz demonstrację 3D <ArrowIcon /></Link>
+                    <span className="service-demo-link text-link">Zobacz demonstrację 3D <ArrowIcon /></span>
                   </>
                 ) : null}
               </p>
               <span className="service-arrow" aria-hidden="true"><ArrowIcon /></span>
-            </article>
+            </Link>
           ))}
         </div>
         <Link className="section-cta text-link" href="/services">Poznaj ofertę i technologie <ArrowIcon /></Link>

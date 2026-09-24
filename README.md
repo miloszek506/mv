@@ -34,16 +34,16 @@ Strona łączy minimalistyczny język wizualny z wyrazistymi animacjami, przemy�
 
 ## Podstrony
 
-- `/` — Strona główna
-- `/about` — O nas
-- `/projects` — Projekty i portfolio
-- `/projects/avandis` — Case study realizacji Avandis
-- `/projects/benvenuti-a-napoli` — Case study realizacji Benvenuti a Napoli
-- `/services` — Usługi i oferta
-- `/cennik` — Alternatywny adres oferty i cennika
-- `/contact` — Kontakt
-- `/polityka-cookies` — Polityka cookies
-- `/polityka-prywatnosci` — Polityka prywatności
+- `/`: Strona główna
+- `/about`: O nas
+- `/projects`: Projekty i portfolio
+- `/projects/avandis`: Case study realizacji Avandis
+- `/projects/benvenuti-a-napoli`: Case study realizacji Benvenuti a Napoli
+- `/services`: Usługi i oferta
+- `/cennik`: Alternatywny adres oferty i cennika
+- `/contact`: Kontakt
+- `/polityka-cookies`: Polityka cookies
+- `/polityka-prywatnosci`: Polityka prywatności
 
 ## Struktura projektu
 
