@@ -10,11 +10,9 @@
 .desktopExperience { display: flex; flex: 1; flex-direction: column; min-height: 0; }
 .mobileExperience { display: none; flex-direction: column; justify-content: center; gap: 1rem; min-height: 100%; }
 .mobileExperienceEyebrow { color: #82ff1f; font-family: ui-monospace, monospace; font-size: .68rem; letter-spacing: .08em; margin: 0; }
-.mobileExperience h2 { font-size: clamp(2rem, 6vw, 3.4rem); font-weight: 400; letter-spacing: -.06em; line-height: 1; margin: 0; max-width: 26rem; }
-.mobileExperience > p:not(.mobileExperienceEyebrow):not(.mobileExperiencePromo) { color: #b4b5ad; font-size: .94rem; line-height: 1.65; margin: 0; max-width: 34rem; }
-.mobileExperiencePromo { color: #f3f0e8; font-size: .82rem; line-height: 1.5; margin: .35rem 0 0; max-width: 28rem; }
-.mobileExperienceButton { align-items: center; align-self: flex-start; background: #82ff1f; color: #0a0a0a; display: inline-flex; gap: 1.5rem; justify-content: space-between; margin-top: .5rem; min-height: 48px; padding: .85rem 1rem; }
-.mobileExperienceButton span { font-size: 1.2rem; }
+.mobileExperience h1 { color: #f3f0e8; font-size: clamp(3rem, 15vw, 6rem); font-weight: 400; letter-spacing: -.08em; line-height: .9; margin: 0; max-width: 26rem; }
+.mobileExperienceInfo { color: #b4b5ad; font-size: .92rem; line-height: 1.55; margin: .35rem 0 0; max-width: 25rem; }
+.mobileExperienceButton { align-items: center; align-self: flex-start; background: #82ff1f; color: #0a0a0a; display: inline-flex; font-size: .74rem; font-weight: 700; letter-spacing: .08em; margin-top: .75rem; min-height: 50px; padding: .9rem 1rem; }
 .stage { position: relative; min-height: 0; flex: 1; isolation: isolate; }
 .canvas { position: absolute; inset: 0; z-index: 1; }
 .fallback { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -56,10 +54,11 @@
 .lab :focus-visible { outline: 2px solid #82ff1f; outline-offset: 5px; }
 @media (max-width: 1000px) { .header > span { display: none; } .heroFoot { flex-direction: column; margin-top: 3rem; } .stageLabel { font-size: .55rem; } }
 @media (max-width: 760px) {
-  .header { padding: 1.2rem; } .story { display: flex; flex-direction: column; }
+  .header { padding: 1.2rem; } .header > a:last-child { display: none; } .story { display: flex; flex-direction: column; }
   .visual { order: -1; position: relative; height: auto; min-height: 0; width: 100%; padding: 1.25rem; border: 1px solid var(--lab-line); z-index: 1; }
   .desktopExperience { display: none; }
-  .mobileExperience { display: flex; }
+  .mobileExperience { display: flex; min-height: min(72svh, 34rem); }
+  .narrative, .outro, .footer { display: none; }
   .stageIndex { font-size: 2.5rem; top: 0; } .stageLabel { bottom: .3rem; } .pause { font-size: .58rem; padding: .4rem; min-height: 36px; }
   .hero { padding: 3rem 1.25rem; min-height: auto; } .hero h1 { font-size: clamp(3.8rem, 17vw, 7rem); }
   .section { padding: 4rem 1.25rem; scroll-margin-top: max(32svh, 205px); } .eyebrow { font-size: .58rem; } .section h2 { font-size: 3rem; }

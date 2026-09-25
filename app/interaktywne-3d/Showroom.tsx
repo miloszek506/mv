@@ -45,7 +45,7 @@ export default function Showroom() {
     gsap.registerPlugin(ScrollTrigger);
     const media = gsap.matchMedia();
     const context = gsap.context(() => {
-      media.add("(prefers-reduced-motion: no-preference)", () => {
+      media.add("(min-width: 761px) and (prefers-reduced-motion: no-preference)", () => {
         gsap.from("[data-lab-intro]", { y: 32, opacity: 0, stagger: 0.13, duration: 1, ease: "power3.out" });
         gsap.utils.toArray<HTMLElement>("[data-lab-reveal]").forEach((element) => {
           gsap.from(element, { y: 36, opacity: 0, duration: 0.8, ease: "power3.out", scrollTrigger: { trigger: element, start: "top 90%", once: true } });
@@ -82,11 +82,10 @@ export default function Showroom() {
     <div className={styles.story} data-lab-story>
       <div className={styles.visual}>
         <div className={styles.mobileExperience} role="status">
-          <p className={styles.mobileExperienceEyebrow}>WERSJA MOBILNA</p>
-          <h2>Pełne doświadczenie 3D najlepiej działa na komputerze</h2>
-          <p>Tworzymy lekkie, interaktywne sceny WebGL i Three.js, które mogą reagować na ruch kursora, scrollowanie oraz wybór wariantów produktu. Na telefonie pokazujemy uproszczoną wersję, aby zachować szybkość i wygodę korzystania ze strony.</p>
-          <p className={styles.mobileExperiencePromo}>Dla pierwszych projektów interaktywnych przygotowujemy indywidualne warunki wdrożenia.</p>
-          <Link className={styles.mobileExperienceButton} href="/contact/">Zapytaj o wersję 3D <span aria-hidden="true">↗</span></Link>
+          <p className={styles.mobileExperienceEyebrow}>TWÓJ PRODUKT</p>
+          <h1>NOWY WYMIAR</h1>
+          <p className={styles.mobileExperienceInfo}>Pełna prezentacja interaktywna 3D jest dostępna na komputerze.</p>
+          <Link className={styles.mobileExperienceButton} href="/contact/">ROZPOCZNIJ PROJEKT</Link>
         </div>
         <div className={styles.desktopExperience}>
             <div className={styles.stage} role="img" aria-label={`Lampa ORBIT / 01: wariant ${variants[variant].name}. Pierścień światła na smukłej podstawie.`}>
