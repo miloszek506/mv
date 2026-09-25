@@ -29,6 +29,7 @@ export function InteractiveServices({ services }: InteractiveServicesProps) {
     const root = rootRef.current;
     const visual = visualRef.current;
     if (!root || !visual) return;
+    if (window.matchMedia("(max-width: 760px)").matches) return;
 
     const context = gsap.context(() => {
       const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -53,6 +54,7 @@ export function InteractiveServices({ services }: InteractiveServicesProps) {
   useLayoutEffect(() => {
     const visual = visualRef.current;
     if (!visual || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (window.matchMedia("(max-width: 760px)").matches) return;
 
     const art = visual.querySelector<HTMLElement>(".service-visual-art");
     const context = gsap.context(() => {

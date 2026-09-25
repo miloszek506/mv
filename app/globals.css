@@ -1268,7 +1268,7 @@ textarea {
   }
 
   .services-visual {
-    padding: 1.1rem;
+    display: none;
   }
 
   .service-visual-art {

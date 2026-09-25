@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./showroom.module.css";
@@ -31,6 +31,15 @@ export default function Showroom() {
   const motion = useRef<Motion>({ rotation: 0, tilt: 0, x: 0, y: 0 });
   const [variant, setVariant] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const query = window.matchMedia("(max-width: 760px)");
+    const update = () => setIsMobile(query.matches);
+    update();
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  }, []);
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -72,13 +81,22 @@ export default function Showroom() {
     <header className={styles.header}><Link href="/" aria-label="MV Studio: strona główna"><Image className={styles.logo} src="/images/mv-studio-logo.svg" alt="Logo MV Studio" width={147} height={85} priority /><span className={styles.labMark}>LAB</span></Link><span>EXPERIMENT 001 / INTERACTIVE OBJECTS</span><a href="#variant">Konfigurator <span aria-hidden="true">↗</span></a></header>
     <div className={styles.story} data-lab-story>
       <div className={styles.visual}>
-        <div className={styles.stage} role="img" aria-label={`Lampa ORBIT / 01: wariant ${variants[variant].name}. Pierścień światła na smukłej podstawie.`}>
-          <span className={styles.stageIndex}>O-01</span>
-          <LampFallback color={variants[variant].color} />
-          <Scene variant={variant} motion={motion} paused={paused} />
-          <div className={styles.stageLabel}><span>ORBIT / 01</span><span>LIGHT AS AN OBJECT</span></div>
+        <div className={styles.mobileExperience} role="status">
+          <p className={styles.mobileExperienceEyebrow}>WERSJA MOBILNA</p>
+          <h2>Pełne doświadczenie 3D najlepiej działa na komputerze</h2>
+          <p>Tworzymy lekkie, interaktywne sceny WebGL i Three.js, które mogą reagować na ruch kursora, scrollowanie oraz wybór wariantów produktu. Na telefonie pokazujemy uproszczoną wersję, aby zachować szybkość i wygodę korzystania ze strony.</p>
+          <p className={styles.mobileExperiencePromo}>Dla pierwszych projektów interaktywnych przygotowujemy indywidualne warunki wdrożenia.</p>
+          <Link className={styles.mobileExperienceButton} href="/contact/">Zapytaj o wersję 3D <span aria-hidden="true">↗</span></Link>
         </div>
-        <button className={styles.pause} onClick={() => setPaused(!paused)} aria-pressed={paused}>{paused ? "Wznów ruch obiektu" : "Zatrzymaj ruch obiektu"}</button>
+        <div className={styles.desktopExperience}>
+            <div className={styles.stage} role="img" aria-label={`Lampa ORBIT / 01: wariant ${variants[variant].name}. Pierścień światła na smukłej podstawie.`}>
+              <span className={styles.stageIndex}>O-01</span>
+              <LampFallback color={variants[variant].color} />
+              {isMobile === false ? <Scene variant={variant} motion={motion} paused={paused} /> : null}
+              <div className={styles.stageLabel}><span>ORBIT / 01</span><span>LIGHT AS AN OBJECT</span></div>
+            </div>
+            <button className={styles.pause} onClick={() => setPaused(!paused)} aria-pressed={paused}>{paused ? "Wznów ruch obiektu" : "Zatrzymaj ruch obiektu"}</button>
+        </div>
       </div>
       <div className={styles.narrative}>
         <section className={styles.hero}>
