@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowIcon } from "@/components/ArrowIcon";
 import { CookieSettingsButton } from "@/components/CookieSettingsButton";
 import { contact, navigation } from "@/data/site-content";
+import { localPages } from "@/data/local-pages";
 
 export function SiteFooter() {
   return (
@@ -37,6 +38,10 @@ export function SiteFooter() {
           <CookieSettingsButton />
         </div>
       </div>
+      <nav className="footer-locations" aria-label="Strony internetowe dla firm w regionie">
+        <span>Strony internetowe</span>
+        {localPages.map((page) => <Link href={`/${page.slug}/`} key={page.slug}>{page.city}</Link>)}
+      </nav>
       <p className="footer-copyright">© 2026 MV Studio. Wszelkie prawa zastrzeżone.</p>
     </footer>
   );

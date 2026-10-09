@@ -2428,6 +2428,9 @@ body.menu-open {
 }
 
 /* Expanded footer */
+.footer-locations { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; padding: 0 0 2rem; font-size: .88rem; }
+.footer-locations > span { color: var(--muted); }
+.footer-locations a:hover { color: #82ff1f; }
 .site-footer {
   display: block;
   overflow: hidden;

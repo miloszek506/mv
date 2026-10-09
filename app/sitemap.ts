@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { localPages } from "@/data/local-pages";
 
 const siteUrl = "https://mvstudio.pl";
 
@@ -19,9 +20,9 @@ const publicRoutes = [
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return publicRoutes.map((route) => ({
+  return [...publicRoutes.map((route) => ({
     url: `${siteUrl}${route.path}`,
     changeFrequency: route.changeFrequency,
     priority: route.priority,
-  }));
+  })), ...localPages.map((page) => ({ url: `${siteUrl}/${page.slug}/`, changeFrequency: "monthly" as const, priority: 0.7 }))];
 }

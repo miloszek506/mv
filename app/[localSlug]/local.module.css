@@ -1,0 +1,19 @@
+.page { padding: 8rem max(1.25rem, 4vw) 4rem; max-width: 1600px; margin: auto; }
+.breadcrumb { display: flex; flex-wrap: wrap; gap: .8rem; color: var(--muted); font-size: .85rem; }
+.hero { padding: 4rem 0; }
+.hero h1 { font-size: clamp(2.5rem, 6.5vw, 7rem); font-weight: 500; line-height: 1.05; letter-spacing: -.055em; margin: 1.5rem 0 2rem; overflow-wrap: anywhere; }
+.hero h1 span { display: block; color: #82ff1f; }
+.hero > p:not(:first-child), .section > p { max-width: 60rem; font-size: clamp(1rem, 1.4vw, 1.2rem); line-height: 1.8; color: var(--muted); }
+.section { padding: clamp(2.5rem, 6vw, 6rem) 0; border-top: 1px solid var(--line); }
+.section h2 { font-size: clamp(1.8rem, 3.6vw, 4rem); line-height: 1.15; font-weight: 500; letter-spacing: -.04em; max-width: 65rem; overflow-wrap: anywhere; }
+.section h3 { font-size: 1.5rem; font-weight: 500; }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; margin-top: 3rem; }
+.cards article { padding: clamp(1.25rem, 2vw, 2rem); border: 1px solid var(--line); min-width: 0; }
+.cards p, .section li, .section details p { color: var(--muted); line-height: 1.8; }
+.section li { margin-bottom: .8rem; }
+.section ul { padding-left: 1.25rem; }
+.section details { padding: 1.4rem 0; border-bottom: 1px solid var(--line); max-width: 60rem; }
+.section summary { cursor: pointer; font-size: 1.15rem; }
+.section details a { text-decoration: underline; }
+.page :global(.text-link) { margin-top: 1.5rem; flex-wrap: wrap; }
+@media (max-width: 767px) { .cards { grid-template-columns: 1fr; } .page { padding-top: 6rem; } .hero { padding: 2.5rem 0; } }
